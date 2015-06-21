@@ -4,7 +4,8 @@ class PhotoUploader < CarrierWave::Uploader::Base
   if ['development', 'test'].include?(Rails.env)
     storage :file
   else
-    storage :fog
+    # fix later
+    storage :file
   end
 
   process :strip
