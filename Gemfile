@@ -36,3 +36,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'ffaker'
 end
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
