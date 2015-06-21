@@ -16,12 +16,8 @@
     "bower_components"
   ],
   "dependencies": {
-    "angular": "1.4.0-rc.2",
-    "angular-route": "1.4.0-rc.2",
-    "angular-new-router": "0.5.3",
-    "angular-ui-router": "0.2.14",
-    "angular-sanitize": "1.4.0-rc.2",
-    "angular-resource": "1.4.0-rc.2"
+    "bootstrap": "3.3.5",
+    "bootstrap-material-design": "0.3.0"
   },
   "devDependencies": {}
 }
