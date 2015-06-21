@@ -8,6 +8,8 @@ class PhotosController < ApplicationController
   end
 
   def create
+    # not gooo00d
+    raise "Error" unless params[:photo].present?
     ActiveRecord::Base.transaction do
       @photo = Photo.new(photo_params)
       @photo.user = current_user

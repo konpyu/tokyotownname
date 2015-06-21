@@ -1,0 +1,12 @@
+%h2 photos
+
+- @photos.each do |photo|
+  .image-block
+    %img(src="#{photo.image.image_url}")
+    %p
+      = photo.ward.name
+    %p
+      = photo.town.name
+    %p
+      - if photo.comment.present?
+        = photo.comment
