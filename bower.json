@@ -1,0 +1,28 @@
+{
+  "name": "Radio",
+  "version": "0.0.0",
+  "authors": [
+    "KON Yuichi <konpyu@gmail.com>"
+  ],
+  "description": "podcast curation",
+  "keywords": [
+    "podcast"
+  ],
+  "license": "Apache 2.0",
+  "homepage": "http://www.radio.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "angular": "1.4.0-rc.2",
+    "angular-route": "1.4.0-rc.2",
+    "angular-new-router": "0.5.3",
+    "angular-ui-router": "0.2.14",
+    "angular-sanitize": "1.4.0-rc.2",
+    "angular-resource": "1.4.0-rc.2"
+  },
+  "devDependencies": {}
+}
+

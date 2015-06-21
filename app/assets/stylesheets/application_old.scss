@@ -1,0 +1,480 @@
+//--------------------------------------------------
+// IMPORT
+//--------------------------------------------------
+
+@import "core/reset";
+
+
+//--------------------------------------------------
+// SETTING
+//--------------------------------------------------
+
+// PREFIX
+$set_prefix: -webkit-, -moz-, -ms-, -o-, '';
+
+// Color
+$vn-color__white: #ffffff;
+$vn-color__black: #222222;
+$vn-color__ultraLightGrey: #F7F7F7;
+$vn-color__lightGrey: #e1e5e7;
+$vn-color__grey: #B5B5B5;
+$vn-color__orange: #FF5722;
+
+// Font size
+$vn-fontSize__display1: 34px;
+$vn-fontSize__title: 21px;
+$vn-fontSize__subhead: 16px;
+$vn-fontSize__body: 13px;
+$vn-fontSize__caption: 11px;
+
+// Radius
+$vn-radius: 3px;
+
+//--------------------------------------------------
+// Mixin
+//--------------------------------------------------
+
+// SHADOW
+
+@mixin box-shadow($r, $g, $b, $a, $v1, $v2, $v3, $v4){
+  @each $prefix in $set_prefix {
+    #{$prefix}box-shadow: rgba($r, $g, $b, $a) $v1 $v2 $v3 $v4;
+  }
+}
+
+// Radius
+
+@mixin border_radius($br_value) {
+  @each $prefix in $set_prefix {
+      #{$prefix}border-radius: $br_value;
+  }
+}
+
+// Media queries
+
+$width-pc: 940px;
+$width-tablet: 768px;
+$width-smartphone: 480px;
+$width-scrollbar: 20px;
+
+@mixin mediaquery-pc {
+  @media only screen and (min-width: $width-tablet + $width-scrollbar) {
+    @content;
+  }
+}
+
+@mixin mediaquery-tablet {
+  @media only screen and (min-width: $width-smartphone + $width-scrollbar) and (max-width: $width-tablet + $width-scrollbar - 1) {
+    @content;
+  }
+}
+
+@mixin mediaquery-smartphone {
+  @media only screen and (max-width: $width-smartphone + $width-scrollbar - 1) {
+    @content;
+  }
+}
+
+// Clearfix
+
+@mixin clearfix{
+  *zoom:1;
+  &:after{
+    display: block;
+    visibility:hidden;
+    clear: both;
+    height: 0;
+    content: ".";
+  }
+}
+
+// Box
+
+@mixin display($value){
+  @each $prefix in $set_prefix {
+    display: #{$prefix}$value;
+  }
+}
+
+//--------------------------------------------------
+// BASE
+//--------------------------------------------------
+body {
+  background-color: $vn-color__ultraLightGrey;
+  color: $vn-color__black;
+  line-height: 1.5;
+  font-family: "游ゴシック", YuGothic, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  word-wrap: break-word;
+}
+
+p, blockquote, dl, dt, dd, ul, ol, li, form {
+  font-size: $vn-fontSize__body;
+}
+
+a, a:focus{overflow: hidden; outline: none;}
+a{
+  color: $vn-color__black;
+  cursor: pointer;
+}
+
+a{
+  text-decoration: none;
+  &:hover{
+    text-decoration: none;
+    color: $vn-color__orange;
+  }
+}
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box !important;
+  -webkit-box-sizing: border-box !important;
+  box-sizing: border-box !important;
+}
+
+
+%card{
+  background-color: #fff;
+  @include box-shadow(0,0,0,0.1,0px,1px,1px,0px);
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+// Text
+%display{
+  font-size: 26px;
+  margin-bottom: 15px;
+  line-height: 1.3;
+}
+%title{
+  font-size: 20px;
+  line-height: 1.4;
+}
+%subhead{
+  font-size: 16px;
+  margin-bottom: 5px;
+  line-height: 1.4;
+}
+%body-bold{
+  font-size: 13px;
+  font-weight: bold;
+}
+%caption{
+  font-size: 11px;
+  line-height: 1;
+}
+
+// Button
+%button{
+  display: block;
+  border: 1px solid $vn-color__lightGrey;
+  padding: 5px;
+  background-color: #fff;
+  line-height: 1;
+  @include border_radius($vn-radius);
+}
+
+//--------------------------------------------------
+// LAYOUT
+//--------------------------------------------------
+
+// Header
+#header{
+  width: 100%;
+  background: $vn-color__white;
+  @include box-shadow(0,0,0,0.1,0px,1px,1px,0px);
+}
+
+// Content
+#content{
+  @include clearfix;
+  margin: 20px auto;
+  @include mediaquery-pc {
+    width: 860px;
+    #column-full{
+      width: 100%;
+    }
+    #columnMain{
+      width: 600px;
+      float: left;
+    }
+    #column-side{
+      width: 240px;
+      float: right;
+    }
+    .grid{
+      width: 33.3333333%;
+      float: left;
+      padding: 0 10px 20px 10px;
+    }
+  }
+  @include mediaquery-tablet {
+    width: 90%;
+    #column-side{
+      width: 30%;
+      float: left;
+    }
+    #columnMain{
+      width: 65%;
+      float: right;
+    }
+    .grid{
+      width: 50%;
+      float: left;
+      padding: 0 10px 20px 10px;
+    }
+  }
+  @include mediaquery-smartphone {
+    width: 90%;
+  }
+}
+
+
+//--------------------------------------------------
+// COMPONENT
+//--------------------------------------------------
+
+// Header
+.c-header{
+  position: relative;
+  .c-header__logo{
+    text-align: center;
+    font-size: 25px;
+    line-height: 60px;
+    border-bottom: 1px solid $vn-color__lightGrey;
+  }
+}
+
+// Navigation
+.c-navigation{
+  margin: 0px auto;
+  width: 860px;
+  line-height: 1;
+  display:table;
+  table-layout: fixed;
+  .c-navigation__items{
+    line-height: 1;
+    display:table-cell;
+    text-align: center;
+    border-left: 1px solid $vn-color__lightGrey;
+    font-size: 12px;
+    font-weight: bold;
+    &:last-child{
+      border-right: 1px solid $vn-color__lightGrey;
+    }
+    >a{
+      display: block;
+      padding: 10px 0;
+      line-height: 1;
+    }
+  }
+}
+
+
+// Channel
+.c-channel{
+  @extend %card;
+  .c-channel__title{
+    @extend %subhead;
+    margin-top: 10px;
+    margin-bottom: 7px;
+  }
+  .c-channel__description{
+    margin-bottom: 10px;
+  }
+  .c-channel__image{
+    width: 100%;
+    height: auto;
+  }
+  // grid list
+  &.c-channel--index{
+    height: 440px;
+  }
+}
+
+.c-channel--detail{
+  @extend %card;
+  display:table;
+  width: 100%;
+  .c-channel__image{
+    display:table-cell;
+    width: 200px;
+    height: 200px;
+    background-color: #f7f7f7;
+    img{
+      width: 100%;
+      height: auto;
+    }
+  }
+  .c-channel__meta-area{
+    display:table-cell;
+    vertical-align: top;
+    padding-left: 15px;
+  }
+  .c-channel__title{
+    @extend %display;
+    margin-bottom: 10px;
+  }
+  .c-channel__description{
+    margin-bottom: 10px;
+  }
+}
+
+.c-channel--list{
+  @extend %card;
+  .c-channel--list__heading{
+    @extend %body-bold;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $vn-color__ultraLightGrey;
+  }
+  .c-channel__items{
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid $vn-color__ultraLightGrey;
+    display:table;
+    width: 100%;
+  }
+  .c-channel__items:last-child{
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  .c-channel__image{
+    display:table-cell;
+    width: 60px;
+    height: 60px;
+    background-color: #f7f7f7;
+    img{
+      width: 100%;
+      height: auto;
+    }
+  }
+  .c-channel__title{
+    display:table-cell;
+    vertical-align: middle;
+    @extend %body-bold;
+    padding-left: 10px;
+  }
+}
+
+
+
+// Episode
+.c-episode{
+  @extend %card;
+  position: relative;
+  .c-episode__title{
+    @extend %subhead;
+    margin-bottom: 10px;
+  }
+  .c-episode__title--detail{
+    @extend %display;
+    margin-bottom: 10px;
+  }
+  .c-episode__player{
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  .c-episode__pub-date{
+    @extend %caption;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
+  .c-tagcloud{
+    margin-bottom: 5px;
+  }
+  .c-episode__description{
+    font-size: $vn-fontSize__body !important;
+    h1, h2, h3, h4, h5, h6, p, blockquote, dl, dt, dd, ul, ol, li{
+      font-size: $vn-fontSize__body !important;
+    }
+    h1, h2, h3, h4, h5, h6, p, blockquote, dl, ul, ol{
+      margin-bottom: 10px;
+    }
+    li{
+      list-style-type : disc;
+      list-style-position: inside;
+    }
+  }
+  .c-episode__channel-meta{
+    display:table;
+    margin-bottom: 10px;
+    .c-episode__channel-meta__image{
+      display:table-cell;
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+      background-color: #f7f7f7;
+    }
+    .c-episode__channel-meta__title{
+      display:table-cell;
+      vertical-align: middle;
+      @extend %body-bold;
+    }
+  }
+}
+
+.c-episode--list{
+  @extend %card;
+  position: relative;
+  .c-episode--list__heading{
+    @extend %body-bold;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $vn-color__ultraLightGrey;
+  }
+  .c-episode__items:last-child{
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  .c-episode__items{
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid $vn-color__ultraLightGrey;
+    display: table;
+  }
+  .c-episode__meta{
+    display: table-cell;
+    vertical-align: top;
+    padding-left: 10px;
+  }
+  .c-episode__image{
+    display: table-cell;
+    width: 30px;
+    height: 30px;
+    vertical-align: top;
+    >img{
+      width: 100%;
+      height: auto;
+    }
+  }
+  .c-episode__title{
+    @extend %body-bold;
+  }
+  .c-episode__player{
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .c-episode__pub-date{
+    @extend %caption;
+    margin-bottom: 5px;
+  }
+}
+
+
+// Tagcloud
+.c-tagcloud{
+  font-size: 0;
+  .c-tagcloud__items{
+    display: inline-block;
+    font-size: normal;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    >a{
+      @extend %button;
+      @extend %caption;
+    }
+  }
+}

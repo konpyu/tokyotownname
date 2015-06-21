@@ -1,0 +1,154 @@
+/* =============================================================
+  RESET
+ * ============================================================= */
+
+html {
+  // overflow-y: scroll;
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-size: 1em;
+}
+
+p, blockquote, dl, dt, dd, ul, ol, li, form {
+  font-size: 10px;
+}
+
+p, blockquote, dl, dd, figure {
+  margin: 0;
+}
+
+hr {
+  -moz-box-sizing: content-box;
+       box-sizing: content-box;
+  height: auto;
+  color: inherit;
+}
+
+pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: monospace, sans-serif;
+}
+
+ol, ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a:focus {
+  outline: thin dotted;
+}
+
+a:hover, a:active {
+  outline: 0;
+}
+
+br {
+  *letter-spacing: 0;
+}
+
+img {
+  border: 0;
+  vertical-align: top;
+  -ms-interpolation-mode: bicubic;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+caption {
+  padding: 0;
+  text-align: left;
+}
+
+th, td {
+  padding: 0;
+  vertical-align: baseline;
+  text-align: left;
+}
+
+form {
+  margin: 0;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  border: 0;
+  *margin-left: -7px;
+}
+
+input, button, select, textarea {
+  margin: 0;
+  color: inherit;
+  font-size: 1em;
+  font-family: inherit;
+}
+
+input, button {
+  vertical-align: inherit;
+  line-height: normal;
+  *vertical-align: middle;
+}
+
+input::-moz-focus-inner,
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+input[type="search"] {
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+  -webkit-appearance: textfield;
+}
+
+input[type="search"]:focus {
+  outline-offset: -2px;
+}
+
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button {
+  cursor: pointer;
+  -webkit-appearance: button;
+  *overflow: visible;
+}
+
+textarea {
+  overflow: auto;
+  vertical-align: top;
+  *font-family: sans-serif;
+}

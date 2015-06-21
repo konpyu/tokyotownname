@@ -1,0 +1,46 @@
+!!!
+%html
+  %head
+    %base(href="/")
+    %title
+      castation
+
+    - if @no_index
+      %meta(name="robots" content="noindex")
+
+    = stylesheet_link_tag 'application', media: 'all'
+
+    %meta{:content => "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0", :name => "viewport"}/
+
+    = javascript_include_tag 'library'
+    = javascript_include_tag 'app'
+    = javascript_include_tag 'tmpl'
+  %body
+    #header
+      .c-header
+        %h1.c-header__logo
+          %a{:href => "/"} castation
+        %ul.c-header__navi
+          %li
+            %a{:href => "/"} チャンネル登録
+
+    #content
+      #columnLeft
+        %nav
+          %dl.c-navigation
+            %dd.c-navigation__items
+              %a{:href => "/channels"} テクノロジー
+            %dd.c-navigation__items
+              %a{:href => "/channels"} ゲーム/趣味
+            %dd.c-navigation__items
+              %a{:href => "/channels"} コメディ
+            %dd.c-navigation__items
+              %a{:href => "/channels"} 社会/文化
+            %dd.c-navigation__items
+              %a{:href => "/channels"} テレビ番組/映画
+            %dd.c-navigation__items
+              %a{:href => "/channels"} スポーツ
+            %dd.c-navigation__items
+              %a{:href => "/channels"} ビジネス
+
+      = yield
