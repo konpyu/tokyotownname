@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create'
   post '/auth/:provider/callback', to: 'sessions#create'
 
+  resources :lives, only: [:create, :destroy]
   resources :photos
   resources :towns, only: [:show, :index]
   resources :wards, only: [:show, :index]
