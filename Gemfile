@@ -20,6 +20,9 @@ gem 'json-jwt'
 gem 'active_model_serializers'
 
 gem 'feedjira'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 
 group :development, :test do
   gem "better_errors"
