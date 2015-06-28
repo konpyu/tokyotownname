@@ -65,7 +65,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    return User.first
+    return User.find_by(id: session[:id])
   end
   helper_method :current_user
 

@@ -14,6 +14,13 @@
   %body
     %a(href="/")
       TokyoTownName-New
+    - if current_user.present?
+      %a LOGIN
+    - else
+      .tw
+        = link_to "LOGIN Tw", "/auth/twitter"
+      .fb
+        = link_to "LOGIN SURU", "/auth/facebook"
     %h3 debug info
     .debuginfo
       = link_to 'list of wards', wards_path
