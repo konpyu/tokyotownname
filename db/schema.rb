@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150628013955) do
+ActiveRecord::Schema.define(version: 20150628034559) do
 
   create_table "access_tokens", force: :cascade do |t|
     t.string   "token",      limit: 255, null: false
@@ -81,6 +81,17 @@ ActiveRecord::Schema.define(version: 20150628013955) do
 
   add_index "images", ["key"], name: "index_images_on_key", using: :btree
   add_index "images", ["user_id"], name: "index_images_on_user_id", using: :btree
+
+  create_table "lives", force: :cascade do |t|
+    t.integer  "user_id",      limit: 4,   null: false
+    t.string   "kind",         limit: 255, null: false
+    t.string   "livable_type", limit: 255, null: false
+    t.integer  "livable_id",   limit: 4,   null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "lives", ["user_id", "livable_type", "livable_id"], name: "index_lives_on_user_id_and_livable_type_and_livable_id", unique: true, using: :btree
 
   create_table "notifications", force: :cascade do |t|
     t.datetime "created_at", null: false
