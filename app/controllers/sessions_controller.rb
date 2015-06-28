@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     auth = request.env["omniauth.auth"]
     authentication = Authentication.where(uid: auth["uid"], provider: auth["provider"]).first
     if authentication.present?
-      session[:id] = User.find(authentication.user_id)
+      session[:id] = User.find(authentication.user_id).try(:id)
       redirect_to :root and return
     else
       ActiveRecord::Base.transaction do

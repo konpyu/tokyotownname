@@ -15,12 +15,12 @@
     %a(href="/")
       TokyoTownName-New
     - if current_user.present?
-      %a LOGIN
+      %p
+        Login as #{current_user.name}
+      = image_tag current_user.authentication.image, width: 60
     - else
-      .tw
+      .login-tw
         = link_to "LOGIN Tw", "/auth/twitter"
-      .fb
-        = link_to "LOGIN SURU", "/auth/facebook"
     %h3 debug info
     .debuginfo
       = link_to 'list of wards', wards_path
