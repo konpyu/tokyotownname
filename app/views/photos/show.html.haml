@@ -1,0 +1,9 @@
+= image_tag @photo.image.image_url
+%h3 Auther
+
+%h4
+  = @photo.user.name
+  = image_tag @photo.user.authentication.image, width: 100
+
+%h4
+  = @photo.comment

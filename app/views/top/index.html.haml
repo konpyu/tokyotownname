@@ -10,3 +10,5 @@
     %p
       - if photo.comment.present?
         = photo.comment
+    %p
+      = link_to photo.created_at, photo_path(photo)
