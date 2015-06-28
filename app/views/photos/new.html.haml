@@ -1,27 +1,31 @@
-%h1
-  Create New Photo
+- if current_user.present?
+  %h1
+    Create New Photo
 
-= form_tag photos_path , multipart: true, method: :post do |f|
-  / ward
-  .photo-form-area
-    = label_tag :ward
-    = select_tag :ward_id, options_from_collection_for_select(Ward.all, "id", "name", 1)
+  = form_tag photos_path , multipart: true, method: :post do |f|
+    / ward
+    .photo-form-area
+      = label_tag :ward
+      = select_tag :ward_id, options_from_collection_for_select(Ward.all, "id", "name", 1)
 
-  / town
-  .photo-form-area
-    = label_tag :town
-    = select_tag :town_id, options_from_collection_for_select(Town.all, "id", "name", 1)
+    / town
+    .photo-form-area
+      = label_tag :town
+      = select_tag :town_id, options_from_collection_for_select(Town.all, "id", "name", 1)
 
-  / photo
-  .photo-form-area
-    = label_tag :photo
-    = file_field_tag :photo, accept: 'image/png,image/gif,image/jpeg,image/jpg'
+    / photo
+    .photo-form-area
+      = label_tag :photo
+      = file_field_tag :photo, accept: 'image/png,image/gif,image/jpeg,image/jpg'
 
-  / comment
-  .photo-form-area
-    = label_tag :comment
-    = text_field_tag :comment
+    / comment
+    .photo-form-area
+      = label_tag :comment
+      = text_field_tag :comment
 
-  / button
-  .photo-form-area
-    = submit_tag :upload
+    / button
+    .photo-form-area
+      = submit_tag :upload
+- else
+  %h3
+    まずはログインをおなしゃす
