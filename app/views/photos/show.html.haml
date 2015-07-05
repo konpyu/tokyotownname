@@ -8,9 +8,9 @@
 %h4
   = @photo.comment
 
-%a
-  住みたい
-%a
-  住んでた
-%a
-  住んでる
+
+= form_tag lives_path, remote: true, method: :post, id: "ttn_lived" do |f|
+  = submit_tag "住んでた"
+
+:javascript
+  new Lives()
