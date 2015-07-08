@@ -13,23 +13,44 @@
     = stylesheet_link_tag 'application', media: 'all'
 
   %body
-    %a(href="/")
-      TokyoTownName-New
-    - if current_user.present?
-      %p
-        Login as #{current_user.name}
-      = image_tag current_user.authentication.image, width: 60
-    - else
-      .login-tw
-        = link_to "LOGIN Tw", "/auth/twitter"
-    %h3 debug info
-    .debuginfo
-      = link_to 'list of wards', wards_path
-      %span
-        \/
-      = link_to 'list of towns', towns_path
-      %br
-      = link_to 'create new photo', new_photo_path
-    = yield
+    .navbar.navbar-default.navbar-static-top(role="navigation")
+      .container
+        .navbar-header
+          %a.navbar-brand(href="/")
+            TokyoTownName
+
+        .navbar-collapse.collapse
+          %ul.nav.navbar-nav
+            - unless current_user.present?
+              %li
+                = link_to "Login", "/auth/twitter"
+
+
+            %li
+              %a
+                達成状況
+
+            %li
+              %a
+                このサイトについて
+            - if current_user.present?
+              %li
+                = link_to "アップロード", new_photo_path
+
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              - if current_user.present?
+                = link_to "Login as #{current_user.name}"
+
+          /- if current_user.present?
+          /  %p
+          /    Login as #{current_user.name}
+          /  = image_tag current_user.authentication.image, width: 60
+          /- else
+          /  .login-tw
+          /    = link_to "LOGIN Tw", "/auth/twitter"
+
+    .container
+      = yield
 
     %p footer
