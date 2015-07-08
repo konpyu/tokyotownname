@@ -1,14 +1,15 @@
 %h2 photos
 
 - @photos.each do |photo|
-  .image-block
-    = image_tag photo.image.image_url, width: 300
-    %p
-      = photo.ward.name
-    %p
-      = photo.town.name
-    %p
-      - if photo.comment.present?
-        = photo.comment
-    %p
-      = link_to photo.created_at, photo_path(photo)
+  .panel.panel-default
+    .panel-body
+      = image_tag photo.image.image_url, width: 300
+      %p
+        = photo.ward.name
+      %p
+        = photo.town.name
+      %p
+        - if photo.comment.present?
+          = photo.comment
+      %p
+        = link_to photo.created_at, photo_path(photo)
