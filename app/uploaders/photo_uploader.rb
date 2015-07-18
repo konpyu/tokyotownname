@@ -5,7 +5,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
     storage :file
   else
     # fix later
-    storage :file
+    storage :fog
   end
 
   process :strip
@@ -17,7 +17,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   end
 
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "uploads/#{model.class.to_s.underscore}/#{model.id}"
   end
 
   def strip
