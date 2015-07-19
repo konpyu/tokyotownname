@@ -9,8 +9,12 @@
   = @photo.comment
 
 
-= form_tag lives_path, remote: true, method: :post, id: "ttn_lived" do |f|
-  = submit_tag "住んでた"
+- if current_user.present?
+  = form_tag lives_path, remote: true, method: :post, id: "ttn_lived" do |f|
+    = hidden_field_tag :livable_type, @photo.class.name
+    = hidden_field_tag :livable_id, @photo.id
+    = hidden_field_tag :kind, 'lived'
+    = submit_tag "住んでた"
 
 :javascript
   new Lives()
