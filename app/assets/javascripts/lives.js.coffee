@@ -12,12 +12,12 @@ class @Lives
     $(document).off "ajax:success", "#ttn_lived"
     return
 
-  toggleLived: (xhr, data, status) ->
+  toggleLived: (xhr, data, status, res) ->
     form = $("#ttn_lived")
     submit = form.find("input[type='submit']")
 
-    if data.status == "lived"
+    if res.status is 201
       submit.val("住んでた")
-    else
-      submit.val("やっぱ住んでない")
+    else if res.status is 204
+      submit.val("住んでない")
     return
