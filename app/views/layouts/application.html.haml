@@ -35,8 +35,9 @@
             %li
               = link_to "このサイトについて", about_path
 
-            %li
-              = link_to "マイページ", mypage_path
+            - if current_user.present?
+              %li
+                = link_to "マイページ", mypage_path
 
             - if current_user.present?
               %li
