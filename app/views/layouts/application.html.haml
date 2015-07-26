@@ -29,11 +29,17 @@
                   = link_to "Login", "/auth/twitter"
 
 
-              %li
-                = link_to "達成状況", achieve_path
 
               %li
                 = link_to "このサイトについて", about_path
+
+              - if current_user.present?
+                %li
+                  = link_to "マイページ", mypage_path
+
+              %li
+                = link_to "達成状況", achieve_path
+                
               - if current_user.present?
                 %li
                   = link_to "Upload", new_photo_path
