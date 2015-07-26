@@ -8,13 +8,16 @@
 %h4
   = @photo.comment
 
-
 - if current_user.present?
-  = form_tag lives_path, remote: true, method: :post, id: "ttn_lived" do |f|
+  / TODO: helperize
+  = form_tag toggle_lives_path, remote: true, method: :post, id: "ttn_lived", class: "show" do |f|
     = hidden_field_tag :livable_type, @photo.class.name
     = hidden_field_tag :livable_id, @photo.id
     = hidden_field_tag :kind, 'lived'
-    = submit_tag "住んでた"
+
+    / TODO: move to helper
+    - submit_txt = Live.where(user: current_user, kind: 'lived', livable: @photo).present? ? 'やっぱ住んでない' : '住んでた'
+    = submit_tag submit_txt
 
 :javascript
   new Lives()
