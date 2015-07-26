@@ -5,8 +5,13 @@ Rails.application.routes.draw do
 
   get 'achieve', to: 'pages#achieve'
   get 'about',   to: 'pages#about'
+  get 'mypage',   to: 'pages#mypage'
 
-  resources :lives, only: [:create, :destroy]
+  resources :lives do
+    collection do
+      post :toggle, to: "lives#toggle_lives"
+    end
+  end
   resources :photos
   resources :towns, only: [:show, :index]
   resources :wards, only: [:show, :index]

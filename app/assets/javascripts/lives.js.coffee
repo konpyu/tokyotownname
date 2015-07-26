@@ -17,7 +17,7 @@ class @Lives
     submit = form.find("input[type='submit']")
 
     if res.status is 201
-      submit.val("住んでた")
+      submit.val("やっぱ住んでない")
     else if res.status is 204
-      submit.val("住んでない")
+      submit.val("住んでた")
     return
