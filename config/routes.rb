@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get 'achieve', to: 'pages#achieve'
   get 'about',   to: 'pages#about'
+  get 'mypage',   to: 'pages#mypage'
 
   resources :lives do
     collection do
