@@ -15,43 +15,52 @@
     = stylesheet_link_tag 'application', media: 'all'
 
   %body
-    .navbar.navbar-default.navbar-static-top(role="navigation")
-      .container
-        .navbar-header
-          %a.navbar-brand(href="/")
-            TokyoTownName
+    .contentsArea
+      .navbar.navbar-default.navbar-static-top(role="navigation")
+        .container
+          .navbar-header
+            %a.navbar-brand(href="/")
+              TokyoTownName
 
-        .navbar-collapse.collapse
-          %ul.nav.navbar-nav
-            - unless current_user.present?
+          .navbar-collapse.collapse
+            %ul.nav.navbar-nav
+              - unless current_user.present?
+                %li
+                  = link_to "Login", "/auth/twitter"
+
+
               %li
-                = link_to "Login", "/auth/twitter"
+                = link_to "達成状況", achieve_path
 
-
-            %li
-              = link_to "達成状況", achieve_path
-
-            %li
-              = link_to "このサイトについて", about_path
-            - if current_user.present?
               %li
-                = link_to "Upload", new_photo_path
-
-          %ul.nav.navbar-nav.navbar-right
-            %li
+                = link_to "このサイトについて", about_path
               - if current_user.present?
-                = link_to "Login as #{current_user.name}"
+                %li
+                  = link_to "Upload", new_photo_path
 
-          /- if current_user.present?
-          /  %p
-          /    Login as #{current_user.name}
-          /  = image_tag current_user.authentication.image, width: 60
-          /- else
-          /  .login-tw
-          /    = link_to "LOGIN Tw", "/auth/twitter"
+            %ul.nav.navbar-nav.navbar-right
+              %li
+                - if current_user.present?
+                  = link_to "Login as #{current_user.name}"
 
-    .container
-      = yield
+            /- if current_user.present?
+            /  %p
+            /    Login as #{current_user.name}
+            /  = image_tag current_user.authentication.image, width: 60
+            /- else
+            /  .login-tw
+            /    = link_to "LOGIN Tw", "/auth/twitter"
 
-    %p footer
-    %img(src="images/cat.jpg")
+      .container
+        = yield
+
+      .footerArea
+        .footerImageArea
+          %img(src="images/common/footer.png")
+        .footerTextArea
+          .footerTextAreaWrap 
+            %p.created Created by DevMorning
+            %p.copyright Copyright © 2015
+
+
+
