@@ -4,4 +4,5 @@
 - @wards.each do |ward|
   .achieve-area
     %span
-      #{ward.name} 2/123
+      -# fuck'n code
+      #{ward.name} #{Photo.where(ward_id: ward.id).pluck(:town_id).uniq.length}/#{Town.where(ward_id: ward.id).count}
