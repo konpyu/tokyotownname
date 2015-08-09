@@ -4,14 +4,15 @@
       .panel-body
         = image_tag photo.image.image_url
         %p
-          = photo.ward.name
+          - if Time.now.ago(14.days) <= photo.created_at
+            %span.label.label-warning
+              new
+          %span
+            = "#{photo.ward.name}#{photo.town.name}"
         %p
-          = photo.town.name
+          = link_to photo.created_at.strftime("%Y/%m/%d %H:%M"), photo_path(photo)
         %p
-          - if photo.comment.present?
-            = photo.comment
-        %p
-          = link_to photo.created_at, photo_path(photo)
+          Auther: #{photo.user.name}
 
         - if current_user.present? && photo.user == current_user
           %a
