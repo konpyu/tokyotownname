@@ -7,6 +7,7 @@
 
 
 html, body {
+  padding-top: 30px; /* consider height of fixed header */
 	height:100%;
 	background-color:#F7F7F7;
 }
