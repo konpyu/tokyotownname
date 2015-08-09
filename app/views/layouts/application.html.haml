@@ -28,7 +28,9 @@
             %ul.nav.navbar-nav
               - unless current_user.present?
                 %li
-                  = link_to "Login", "/auth/twitter"
+                  = link_to "Login Tw", "/auth/twitter"
+                %li
+                  = link_to "Login Fb", "/auth/facebook"
 
 
 
