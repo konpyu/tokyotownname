@@ -21,6 +21,8 @@
           .navbar-header
             %a.navbar-brand(href="/")
               TokyoTownName
+              %span.sub
+                \- あなたの街の街区表示板 -
 
           .navbar-collapse.collapse
             %ul.nav.navbar-nav
@@ -31,18 +33,26 @@
 
 
               %li
-                = link_to "このサイトについて", about_path
+                = link_to "Top", about_path
 
               - if current_user.present?
                 %li
-                  = link_to "マイページ", mypage_path
+                  = link_to "About", mypage_path
 
               %li
-                = link_to "達成状況", achieve_path
+                = link_to "Search", achieve_path
                 
               - if current_user.present?
                 %li
                   = link_to "Upload", new_photo_path
+
+              - if current_user.present?
+                %li
+                  = link_to "Completion Rate", new_photo_path
+                
+              - if current_user.present?
+                %li
+                  = link_to "My Page", new_photo_path
 
             %ul.nav.navbar-nav.navbar-right
               %li
