@@ -1,17 +1,18 @@
-- @photos.each do |photo|
-  .panel.panel-default
-    .panel-body
-      = image_tag photo.image.image_url
-      %p
-        = photo.ward.name
-      %p
-        = photo.town.name
-      %p
-        - if photo.comment.present?
-          = photo.comment
-      %p
-        = link_to photo.created_at, photo_path(photo)
+%div#ttn-masonry-container
+  - @photos.each do |photo|
+    .panel.panel-default.ttn-masonry-grid-item
+      .panel-body
+        = image_tag photo.image.image_url
+        %p
+          = photo.ward.name
+        %p
+          = photo.town.name
+        %p
+          - if photo.comment.present?
+            = photo.comment
+        %p
+          = link_to photo.created_at, photo_path(photo)
 
-      - if current_user.present? && photo.user == current_user
-        %a
-          = link_to "Delete", photo_path(photo), method: :delete, data: {confirm: '消しますがよいですか?'}
+        - if current_user.present? && photo.user == current_user
+          %a
+            = link_to "Delete", photo_path(photo), method: :delete, data: {confirm: '消しますがよいですか?'}
