@@ -1,23 +1,17 @@
-%h1
-  MyPage
+.row
+  .col-md-2
+    = image_tag current_user.authentication.image, class: "img-circle", style:"width:120px"
+  .col-md-10
+    %h3
+      = current_user.name
+    %h5
+      = "投稿数 #{current_user.photos.count}"
 
-- if current_user.present?
+    %h5
+      住んでた街: 三軒茶屋
 
-  %h4
-    = current_user.name
-    = image_tag current_user.authentication.image, width: 100
-
-  %h3
-    投稿数 #{current_user.photos.count}
-
-  %h3
-    住んでた街
-  /- Live.where(kind: 'lived', user: current_user).each do |hoge|
-  /  %p
-  /    = hoge.livable.town.name
-
-  %h3
-    Photos
-
+%hr
+.row
+  / TODO: masonryにする
   - current_user.photos.each do |photo|
-    = image_tag photo.image.image_url, width: 140
+    = image_tag photo.image.image_url, style: "width:200px"
