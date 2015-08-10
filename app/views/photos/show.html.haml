@@ -1,23 +1,35 @@
-= image_tag @photo.image.image_url
-%h3 Auther
+.row
+  .col-md-8
+    / 画像を正方形の枠の中に収める。jsで抑えこむのがよさげ
+    = image_tag @photo.image.image_url
 
-%h4
-  = @photo.user.name
-  = image_tag @photo.user.authentication.image, width: 100
+  .col-md-4
+    %h3
+      = "#{@photo.ward.name}#{@photo.town.name}"
+    %p.text-muted
+      = @photo.created_at.strftime("%Y/%m/%d %H:%M")
+    %hr
+    %h4 Reporter
+    = image_tag @photo.user.authentication.image, class: "img-circle", style:"width:40px"
+    = "#{@photo.user.name}さん"
 
-%h4
-  = @photo.comment
 
-- if current_user.present?
-  / TODO: helperize
-  = form_tag toggle_lives_path, remote: true, method: :post, id: "ttn_lived", class: "show" do |f|
-    = hidden_field_tag :livable_type, @photo.class.name
-    = hidden_field_tag :livable_id, @photo.id
-    = hidden_field_tag :kind, 'lived'
+    %hr
+    - if current_user.present?
+      / TODO: helperize
+      = form_tag toggle_lives_path, remote: true, method: :post, id: "ttn_lived", class: "show" do |f|
+        = hidden_field_tag :livable_type, @photo.class.name
+        = hidden_field_tag :livable_id, @photo.id
+        = hidden_field_tag :kind, 'lived'
 
-    / TODO: move to helper
-    - submit_txt = Live.where(user: current_user, kind: 'lived', livable: @photo).present? ? 'やっぱ住んでない' : '住んでた'
-    = submit_tag submit_txt
+        / TODO: move to helper
+        - submit_txt = Live.where(user: current_user, kind: 'lived', livable: @photo).present? ? 'やっぱ住んでない' : '住んでた'
+        = submit_tag submit_txt, class: "btn btn-default"
+
+    %hr
+    %h5
+      = @photo.comment
+
 
 :javascript
   new Lives()
