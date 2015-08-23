@@ -51,15 +51,11 @@
               - if current_user.present?
                 %li
                   = link_to "Completion Rate", achieve_path
-                
-              - if current_user.present?
-                %li
-                  = link_to "My Page", mypage_path
 
             %ul.nav.navbar-nav.navbar-right
               %li
                 - if current_user.present?
-                  = link_to "Login as #{current_user.name}"
+                  = link_to image_tag(current_user.authentication.image, class: "img-circle", style:"width:38px;"), mypage_path
 
             /- if current_user.present?
             /  %p
