@@ -31,23 +31,15 @@
                   = link_to "Login Tw", "/auth/twitter"
                 %li
                   = link_to "Login Fb", "/auth/facebook"
-
-
-
               %li
-                = link_to "Top", about_path
-
-              - if current_user.present?
-                %li
-                  = link_to "About", mypage_path
-
+                = link_to "About", about_path
               %li
                 = link_to "Search", achieve_path
-                
+              %li
+                = link_to "Reporters", users_path
               - if current_user.present?
                 %li
                   = link_to "Upload", new_photo_path
-
               - if current_user.present?
                 %li
                   = link_to "Completion Rate", achieve_path
@@ -56,14 +48,6 @@
               %li
                 - if current_user.present?
                   = link_to image_tag(current_user.authentication.image, class: "img-circle", style:"width:38px;"), mypage_path
-
-            /- if current_user.present?
-            /  %p
-            /    Login as #{current_user.name}
-            /  = image_tag current_user.authentication.image, width: 60
-            /- else
-            /  .login-tw
-            /    = link_to "LOGIN Tw", "/auth/twitter"
 
       .container
         = yield
@@ -75,6 +59,3 @@
           .footerTextAreaWrap 
             %p.created Created by DevMorning
             %p.copyright Copyright © 2015
-
-
-

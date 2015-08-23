@@ -1,0 +1,6 @@
+%h1
+  Thank you for reporting!
+
+- @users.each do |user|
+  = link_to image_tag(user.authentication.image, class: "img-circle", style: "width:180px"), user_path(user)
+

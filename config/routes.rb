@@ -15,6 +15,6 @@ Rails.application.routes.draw do
   resources :photos
   resources :towns, only: [:show, :index]
   resources :wards, only: [:show, :index]
-  resources :users, only: [:show]
+  resources :users, only: [:show, :index]
   resources :comments
 end
