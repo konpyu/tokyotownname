@@ -6,7 +6,7 @@
         %p
           - if Time.now.ago(14.days) <= photo.created_at
             %span.label.label-warning
-              new
+              NEW
           %span
             = "#{photo.ward.name}#{photo.town.name}"
         %p

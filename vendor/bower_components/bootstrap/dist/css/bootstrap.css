@@ -4946,6 +4946,7 @@ a.label:focus {
 }
 .label-warning {
   background-color: #f0ad4e;
+  margin-right: 5px;
 }
 .label-warning[href]:hover,
 .label-warning[href]:focus {
