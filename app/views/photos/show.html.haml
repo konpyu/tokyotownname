@@ -30,16 +30,17 @@
     %h5
       = @photo.comment
     %hr
-    %strong
+    %strong#comment-count
       = "#{@photo.comments.count} comments"
 
-    - @photo.comments.each do |comment|
-      %p
-        %span.text-info
-          = comment.user.name
-        = comment.comment
-        - if current_user.present? && current_user.id == comment.user_id
-          = link_to "delete", comment_path(comment), class: "text-warning", method: :delete, data: { confirm: "消して大丈夫?" }
+    #comment-list
+      - @photo.comments.each do |comment|
+        %p
+          %span.text-info
+            = comment.user.name
+          = comment.comment
+          - if current_user.present? && current_user.id == comment.user_id
+            = link_to "delete", comment_path(comment), class: "text-warning", method: :delete, data: { confirm: "消して大丈夫?" }
     .form-group
       = form_tag comments_path, remote: true, method: :post, id: "ttn_comment_form", class: "show" do |f|
         = text_field_tag :comment, nil, class: "form-control", placeholder: "コメントを追加", class: "show"
