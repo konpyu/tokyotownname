@@ -1,7 +1,8 @@
 .row
   .col-md-8
     / 画像を正方形の枠の中に収める。jsで抑えこむのがよさげ
-    = image_tag @photo.image.image_url
+    .hoge.ttn_photo_show_image(style="height:600px")
+      = image_tag @photo.image.image_url
 
   .col-md-4
     %h3
