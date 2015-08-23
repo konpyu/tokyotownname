@@ -12,7 +12,7 @@
     %hr
     %h4 Reporter
     = image_tag @photo.user.authentication.image, class: "img-circle", style:"width:40px"
-    = "#{@photo.user.name}さん"
+    = link_to "#{@photo.user.name}さん", user_path(@photo.user)
 
 
     %hr

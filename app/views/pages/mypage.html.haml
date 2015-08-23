@@ -1,17 +1,1 @@
-.row
-  .col-md-2
-    = image_tag current_user.authentication.image, class: "img-circle", style:"width:120px"
-  .col-md-10
-    %h3
-      = current_user.name
-    %h5
-      = "投稿数 #{current_user.photos.count}"
-
-    %h5
-      住んでた街: 三軒茶屋
-
-%hr
-.row
-  / TODO: masonryにする
-  - current_user.photos.each do |photo|
-    = image_tag photo.image.image_url, style: "width:200px"
+= render partial: 'users/user', locals: { user: current_user }

@@ -12,7 +12,7 @@
               %span
                 = "#{photo.ward.name}#{photo.town.name}"
             %p.username
-              Auther: #{photo.user.name}
+              = link_to "Auther: #{photo.user.name}", user_path(photo.user)
           %p
             = link_to photo.created_at.strftime("%Y/%m/%d %H:%M"), photo_path(photo)
           - if current_user.present? && photo.user == current_user
