@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_filter :authenticate!, only: [:create, :destory]
   def create
+    unprocessable_entity! unless params[:comment].present?
     comment = Comment.new
     comment.commentable = commentable
     comment.commentable_user_id = commentable.user_id
@@ -15,7 +16,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    comment = Comment.find(params[:comment_id])
+    comment = Comment.find(params[:id])
     comment.destroy
     head :no_content
   end
