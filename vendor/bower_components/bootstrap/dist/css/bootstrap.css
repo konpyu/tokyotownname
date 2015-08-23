@@ -5760,13 +5760,23 @@ button.list-group-item-danger.active:focus {
   height: 100px; padding: 10px 10px 0;
   bottom: -62px;
   position: absolute;
-  color: #FFF;
-  background-color:  rgba( 0, 0, 0, 0.55 );
+  color: #d45400;
+  background-color:  rgba( 255, 255, 255, 0.7 );
   -webkit-transition: .3s;
   transition: .3s;
 }
 .panel-default > .panel-body:hover .panel-info {
   bottom: 2px;
+}
+.panel-default > .panel-body:hover .panel-info .panel-info-clm01 {
+  overflow: hidden;
+}
+.panel-default > .panel-body:hover .panel-info .panel-info-clm01 p.townname {
+  float: left;
+  font-weight: bold;
+}
+.panel-default > .panel-body:hover .panel-info .panel-info-clm01 p.username {
+  float: right;
 }
 .panel-primary {
   border-color: #337ab7;
