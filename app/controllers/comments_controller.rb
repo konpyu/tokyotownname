@@ -1,11 +1,12 @@
 class CommentsController < ApplicationController
-  # before_fileter :authenticate!, only: [:create, :destory]
+  before_filter :authenticate!, only: [:create, :destory]
   def create
     comment = Comment.new
     comment.commentable = commentable
+    comment.commentable_user_id = commentable.user_id
     comment.user = current_user
     comment.comment = params[:comment]
-    comments.save!
+    comment.save!
     if request.xhr?
       render json: { comment: comment } , status:201
     else

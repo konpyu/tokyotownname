@@ -64,6 +64,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authenticate!
+    raise Tokyotownname::UnAuthorized if current_user.blank?
+  end
+
   def current_user
     return User.find_by(id: session[:id])
   end
