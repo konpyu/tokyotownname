@@ -1,0 +1,15 @@
+.row
+  .col-md-2
+    = image_tag "/images/wards/101.png", style: "width:80%"
+  .col-md-10
+    %h3
+      = @ward.name
+    %h5
+      = "投稿数 8"
+
+
+%hr
+.row
+  / TODO: masonryにする
+  - @ward.photos.each do |photo|
+    = image_tag photo.image.image_url, style: "width:200px"

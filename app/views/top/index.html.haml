@@ -2,7 +2,7 @@
   - @photos.each do |photo|
     .panel.panel-default.ttn-masonry-grid-item
       .panel-body
-        = image_tag photo.image.image_url, { "data-toggle" => "modal", "data-target" => "#mymyModal", "data-imageurl" => "#{photo.image.image_url}"}
+        = image_tag photo.image.image_url, { "data-toggle" => "modal", "data-target" => "#ttnPhotoDetailModal", "data-imageurl" => "#{photo.image.image_url}"}
         .panel-info
           .panel-info-clm01
             %p.townname
@@ -22,7 +22,7 @@
 %button#ttn-photos-paging
   Next Page
 
-.modal#mymyModal
+.modal#ttnPhotoDetailModal
   .modal-dialog.modal-lg(role="document")
     .modal-content
       .row
