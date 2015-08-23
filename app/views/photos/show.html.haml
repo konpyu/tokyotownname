@@ -41,10 +41,14 @@
         ドドリア
       僕もここに住んでいたことあるよ。銭湯が近くにあるよね
 
-    %form
-      .form-group
-        %input.form-control(type="text" placeholder="コメントを追加")
+    .form-group
+      = form_tag comments_path, remote: true, method: :post, id: "ttn_comment_form", class: "show" do |f|
+        = text_field_tag :comment, nil, class: "form-control", placeholder: "コメントを追加", class: "show"
+        = hidden_field_tag :commentable, @photo.class.name
+        = hidden_field_tag :commentable_id, @photo.id
+        = submit_tag "Submit!", class: "btn btn-default"
 
 
 :javascript
-  new Lives()
+  new Lives();
+  new Comments();
