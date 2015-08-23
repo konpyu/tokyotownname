@@ -1,5 +1,5 @@
 $(document).ready ->
-  $('#mymyModal').on 'show.bs.modal', (e) ->
+  $('#ttnPhotoDetailModal').on 'show.bs.modal', (e) ->
     button = $(e.relatedTarget)
     recipient = button.data('imageurl')
     img = $('img#modal-photo-img')
