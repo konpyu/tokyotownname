@@ -7,9 +7,9 @@
 
 
 html, body {
-  padding-top: 30px; /* consider height of fixed header */
 	height:100%;
 	background-color:#F7F7F7;
+	margin-top: 60px;
 }
 
 /*_____.contentsArea_____*/
