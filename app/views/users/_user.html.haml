@@ -1,0 +1,17 @@
+.row
+  .col-md-2
+    = image_tag user.authentication.image, class: "img-circle", style:"width:120px"
+  .col-md-10
+    %h3
+      = user.name
+    %h5
+      = "投稿数 #{user.photos.count}"
+
+    %h5
+      住んでた街: 三軒茶屋
+
+%hr
+.row
+  / TODO: masonryにする
+  - user.photos.each do |photo|
+    = image_tag photo.image.image_url, style: "width:200px"
