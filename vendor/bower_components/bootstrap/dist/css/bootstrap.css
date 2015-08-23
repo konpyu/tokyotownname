@@ -5758,7 +5758,7 @@ button.list-group-item-danger.active:focus {
 .panel-default > .panel-body > .panel-info {
   width: 334px;
   height: 100px; padding: 10px 10px 0;
-  bottom: -102px;
+  bottom: -62px;
   position: absolute;
   color: #FFF;
   background-color:  rgba( 0, 0, 0, 0.55 );
