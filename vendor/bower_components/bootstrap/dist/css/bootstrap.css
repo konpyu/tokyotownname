@@ -5751,6 +5751,23 @@ button.list-group-item-danger.active:focus {
 .panel-default > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #ddd;
 }
+.panel-default > .panel-body {
+  position: relative;
+  overflow: hidden;
+}
+.panel-default > .panel-body > .panel-info {
+  width: 334px;
+  height: 100px; padding: 10px 10px 0;
+  bottom: -102px;
+  position: absolute;
+  color: #FFF;
+  background-color:  rgba( 0, 0, 0, 0.55 );
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+.panel-default > .panel-body:hover .panel-info {
+  bottom: 2px;
+}
 .panel-primary {
   border-color: #337ab7;
 }
