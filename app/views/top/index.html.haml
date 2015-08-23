@@ -4,17 +4,17 @@
       .panel-body
         = image_tag photo.image.image_url, { "data-toggle" => "modal", "data-target" => "#mymyModal", "data-imageurl" => "#{photo.image.image_url}"}
         .panel-info
-          %p
-            - if Time.now.ago(14.days) <= photo.created_at
-              %span.label.label-warning
-                NEW
-            %span
-              = "#{photo.ward.name}#{photo.town.name}"
+          .panel-info-clm01
+            %p.townname
+              - if Time.now.ago(14.days) <= photo.created_at
+                %span.label.label-warning
+                  NEW
+              %span
+                = "#{photo.ward.name}#{photo.town.name}"
+            %p.username
+              Auther: #{photo.user.name}
           %p
             = link_to photo.created_at.strftime("%Y/%m/%d %H:%M"), photo_path(photo)
-          %p
-            Auther: #{photo.user.name}
-
           - if current_user.present? && photo.user == current_user
             %a
               = link_to "Delete", photo_path(photo), method: :delete, data: {confirm: '消しますがよいですか?'}
