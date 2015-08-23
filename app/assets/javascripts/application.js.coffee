@@ -5,5 +5,6 @@
 #= require imagesloaded/imagesloaded
 
 #= require lives
+#= require comments
 #= require masonry
 #= require modal
