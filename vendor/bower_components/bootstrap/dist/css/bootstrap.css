@@ -5760,7 +5760,6 @@ button.list-group-item-danger.active:focus {
   height: 100px; padding: 10px 10px 0;
   bottom: -62px;
   position: absolute;
-  color: #d45400;
   background-color:  rgba( 255, 255, 255, 0.7 );
   -webkit-transition: .3s;
   transition: .3s;
@@ -5776,6 +5775,12 @@ button.list-group-item-danger.active:focus {
   font-weight: bold;
 }
 .panel-default > .panel-body > .panel-info > .panel-info-clm01 p.username {
+  float: right;
+}
+.panel-default > .panel-body > .panel-info > a.btn_delete {
+  float: right;
+}
+.panel-default > .panel-body > .panel-info > p.date {
   float: right;
 }
 .panel-primary {
