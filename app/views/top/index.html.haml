@@ -2,7 +2,6 @@
   - @photos.each do |photo|
     .panel.panel-default.ttn-masonry-grid-item
       .panel-body
-        /= image_tag photo.image.image_url, { "data-toggle" => "modal", "data-target" => "#ttnPhotoDetailModal", "data-reporter-img" => "#{photo.user.authentication.image}", "data-reporter" => "#{photo.user.name}", "data-townname" => "#{photo.ward.name}#{photo.town.name}", "data-pubdate" => "#{photo.created_at.strftime("%Y/%m/%d %H:%M")}", "data-imageurl" => "#{photo.image.image_url}"}
         = image_tag photo.image.image_url, { "data-toggle" => "modal", "data-target" => "#ttnPhotoDetailModal", "data-photo-id" => "#{photo.id}"}
         .panel-info
           .panel-info-clm01
@@ -31,14 +30,16 @@
           %img#modal-photo-img
         .col-md-4
           %h3#modal-photo-town-name
-            = "渋谷区代々木上原(仮)"
 
           %p.text-muted#modal-photo-publish-date
-            = "2015-07-10 13:21(仮)"
 
           %hr
           %h4
             Reporter
-          %img#modal-photo-reporter-img.img-circle(src="https://pbs.twimg.com/profile_images/3378334453/01647eb989408175c146045d43cdd51a_400x400.jpeg" style="width:40px")
+          %img#modal-photo-reporter-img.img-circle(src="" style="width:40px")
           %p#modal-photo-reporter-name
           %hr
+
+          %h4#comment-count
+            Comments
+          #comment-list
