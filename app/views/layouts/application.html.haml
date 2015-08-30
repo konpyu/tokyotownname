@@ -13,6 +13,7 @@
 
     = javascript_include_tag "application"
     = stylesheet_link_tag 'application', media: 'all'
+    = include_gon
 
   %body
     .contentsArea
@@ -47,7 +48,7 @@
             %ul.nav.navbar-nav.navbar-right
               %li
                 - if current_user.present?
-                  = link_to image_tag(current_user.authentication.image, class: "img-circle", style:"width:38px;"), mypage_path
+                  = link_to image_tag(current_user.profile_image_url, class: "img-circle", style:"width:38px;"), mypage_path
 
       .container
         = yield
