@@ -2,7 +2,8 @@
   - @photos.each do |photo|
     .panel.panel-default.ttn-masonry-grid-item
       .panel-body
-        = image_tag photo.image.image_url, { "data-toggle" => "modal", "data-target" => "#ttnPhotoDetailModal", "data-reporter-img" => "#{photo.user.authentication.image}", "data-reporter" => "#{photo.user.name}", "data-townname" => "#{photo.ward.name}#{photo.town.name}", "data-pubdate" => "#{photo.created_at.strftime("%Y/%m/%d %H:%M")}", "data-imageurl" => "#{photo.image.image_url}"}
+        /= image_tag photo.image.image_url, { "data-toggle" => "modal", "data-target" => "#ttnPhotoDetailModal", "data-reporter-img" => "#{photo.user.authentication.image}", "data-reporter" => "#{photo.user.name}", "data-townname" => "#{photo.ward.name}#{photo.town.name}", "data-pubdate" => "#{photo.created_at.strftime("%Y/%m/%d %H:%M")}", "data-imageurl" => "#{photo.image.image_url}"}
+        = image_tag photo.image.image_url, { "data-toggle" => "modal", "data-target" => "#ttnPhotoDetailModal", "data-photo-id" => "#{photo.id}"}
         .panel-info
           .panel-info-clm01
             %p.townname

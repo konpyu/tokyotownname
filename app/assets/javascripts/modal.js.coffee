@@ -1,18 +1,13 @@
 $(document).ready ->
   $('#ttnPhotoDetailModal').on 'show.bs.modal', (e) ->
     button = $(e.relatedTarget)
-    recipient = button.data('imageurl')
-    img = $('img#modal-photo-img')
-    img.attr("src", recipient)
+    photo_id = button.data('photo-id')
 
-    town_name = $('#modal-photo-town-name')
-    town_name.text(button.data('townname'))
+    photos = window.gon.photos
+    photo = photos[photo_id]
 
-    publish_date = $('#modal-photo-publish-date')
-    publish_date.text(button.data('pubdate'))
-
-    reporter_name = $('#modal-photo-reporter-name')
-    reporter_name.text(button.data('reporter'))
-
-    reporter_img = $('img#modal-photo-reporter-img')
-    reporter_img.attr('src', button.data('reporter-img'))
+    $('img#modal-photo-img').attr("src", photo.url)
+    $('#modal-photo-publish-date').text(photo.created_at)
+    $('#modal-photo-town-name').text("#{photo.ward.name}#{photo.town.name}")
+    $('#modal-photo-reporter-name').text(photo.user.name)
+    $('#modal-photo-reporter-img').attr("src", photo.user.image)
