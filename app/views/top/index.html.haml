@@ -17,7 +17,7 @@
             = link_to photo.created_at.strftime("%Y/%m/%d %H:%M"), photo_path(photo)
           - if current_user.present? && photo.user == current_user
             %a
-              = link_to "Delete", photo_path(photo), method: :delete, data: {confirm: '消しますがよいですか?'}
+              = link_to "Delete", photo_path(photo), class:"hoge fuga", method: :delete, data: {confirm: '消しますがよいですか?'}
 
 %button#ttn-photos-paging
   Next Page
