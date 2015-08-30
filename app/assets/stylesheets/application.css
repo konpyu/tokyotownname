@@ -34,10 +34,12 @@ div.footerArea {
     bottom:0;
 }
 div.footerImageArea {
-	width:80%;
+	width:90%;
 	margin:0 auto;
 	position: absolute;;
 	bottom: 25px;
+	right: 0;
+	left: 0;
 }
 div.footerTextArea {
 	width:100%;
