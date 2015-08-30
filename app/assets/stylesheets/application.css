@@ -12,6 +12,10 @@ html, body {
 	margin-top: 60px;
 }
 
+div#ttn-masonry-container {
+	margin: 0 auto;
+}
+
 /*_____.contentsArea_____*/
 div.contentsArea {
     width:100%;
@@ -30,13 +34,17 @@ div.footerArea {
     bottom:0;
 }
 div.footerImageArea {
-	width:1000px;
+	width:80%;
 	margin:0 auto;
+	position: absolute;;
+	bottom: 25px;
 }
 div.footerTextArea {
 	width:100%;
 	height:25px;
 	background-color:#F5AE7E;
+	position: absolute;;
+	bottom: 0;
 }
 div.footerTextAreaWrap {
 	width:1000px;

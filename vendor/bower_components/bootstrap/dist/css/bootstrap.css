@@ -5765,17 +5765,17 @@ button.list-group-item-danger.active:focus {
   -webkit-transition: .3s;
   transition: .3s;
 }
-.panel-default > .panel-body:hover .panel-info {
+.panel-default > .panel-body:hover > .panel-info {
   bottom: 2px;
 }
-.panel-default > .panel-body:hover .panel-info .panel-info-clm01 {
+.panel-default > .panel-body > .panel-info > .panel-info-clm01 {
   overflow: hidden;
 }
-.panel-default > .panel-body:hover .panel-info .panel-info-clm01 p.townname {
+.panel-default > .panel-body > .panel-info > .panel-info-clm01 p.townname {
   float: left;
   font-weight: bold;
 }
-.panel-default > .panel-body:hover .panel-info .panel-info-clm01 p.username {
+.panel-default > .panel-body > .panel-info > .panel-info-clm01 p.username {
   float: right;
 }
 .panel-primary {
