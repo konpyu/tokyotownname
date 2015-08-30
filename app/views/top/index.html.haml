@@ -43,3 +43,14 @@
           %h4#comment-count
             Comments
           #comment-list
+          - if current_user.present?
+            .form-group
+              = form_tag comments_path, remote: true, method: :post, id: "ttn_comment_form", class: "show" do |f|
+                = text_field_tag :comment, nil, class: "form-control", placeholder: "コメントを追加", class: "show"
+                = hidden_field_tag :commentable, "note"
+                = hidden_field_tag :commentable_id, 111
+                = submit_tag "Submit!", class: "btn btn-default"
+
+          - else
+            %p
+              コメントするためにはログインをしないといけないとです

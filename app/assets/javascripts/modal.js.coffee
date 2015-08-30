@@ -1,5 +1,15 @@
 $(document).ready ->
   $('#ttnPhotoDetailModal').on 'show.bs.modal', (e) ->
+
+    # init dom
+    $('img#modal-photo-img').attr("src", "")
+    $('#modal-photo-publish-date').text("")
+    $('#modal-photo-town-name').text("")
+    $('#modal-photo-reporter-name').text("")
+    $('#modal-photo-reporter-img').attr("src", "")
+    $("#comment-list").text("")
+    $('#comment-count').text("")
+
     button = $(e.relatedTarget)
     photo_id = button.data('photo-id')
 
@@ -12,6 +22,7 @@ $(document).ready ->
     $('#modal-photo-reporter-name').text(photo.user.name)
     $('#modal-photo-reporter-img').attr("src", photo.user.image)
 
+    # TODO: codedup
     for comment in photo.comments
       apnd = "<p><span class='text-info'>konpyu</span> #{comment.comment} <a>delete</a></p>"
       $("#comment-list").append(apnd)
