@@ -21,6 +21,7 @@ $(document).ready ->
     $('#modal-photo-town-name').text("#{photo.ward.name}#{photo.town.name}")
     $('#modal-photo-reporter-name').text(photo.user.name)
     $('#modal-photo-reporter-img').attr("src", photo.user.image)
+    $('#modal-photo-commentable-id').val(photo.id)
 
     # TODO: codedup
     for comment in photo.comments

@@ -47,10 +47,13 @@
             .form-group
               = form_tag comments_path, remote: true, method: :post, id: "ttn_comment_form", class: "show" do |f|
                 = text_field_tag :comment, nil, class: "form-control", placeholder: "コメントを追加", class: "show"
-                = hidden_field_tag :commentable, "note"
-                = hidden_field_tag :commentable_id, 111
+                = hidden_field_tag :commentable, "photo"
+                = hidden_field_tag :commentable_id, "", id: "modal-photo-commentable-id"
                 = submit_tag "Submit!", class: "btn btn-default"
 
           - else
             %p
               コメントするためにはログインをしないといけないとです
+:javascript
+  new Lives();
+  new Comments();
