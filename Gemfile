@@ -23,6 +23,7 @@ gem 'feedjira'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+gem 'gon', '5.2.3'
 
 group :development, :test do
   gem "better_errors"
