@@ -10,12 +10,14 @@ html, body {
 	height:100%;
 	background-color:#F7F7F7;
 	margin-top: 60px;
+	-webkit-font-smoothing: antialiased;
 }
 
 div#ttn-masonry-container {
 	margin: 0 auto;
 }
 
+/******* index.html.haml *******/
 /*_____.contentsArea_____*/
 div.contentsArea {
     width:100%;
@@ -25,6 +27,47 @@ div.contentsArea {
     min-height:100%;
     padding-bottom:160px;
 }
+
+/******* about.html.haml *******/
+/*_____#maincontents____*/
+div#maincontents {
+	background: url("../images/about/townimage.jpg") no-repeat right;
+	position: relative;
+	width: 80%;
+	margin: 0 auto;
+}
+div#maincontents .col-md-12 {
+	color: #FFF;
+	padding: 20px 40px;
+}
+div#maincontents .col-md-12 h2 {
+	font-size: 21px;
+	font-family: Garamond;
+	font-weight: bold;;
+	margin-bottom: 20px;
+}
+div#maincontents .col-md-12 h2 span {
+	font-size: 110%;
+}
+div#maincontents .col-md-12 p {
+	line-height: 1.7em;
+}
+div#maincontents .col-md-12 p.read {
+	margin-bottom: 50px;
+	font-size: 18px;
+}
+/*_____#subcontents____*/
+div#subcontents {
+	margin-top: 40px;
+}
+div#subcontents h3, p{
+	font-size: 16px;
+}
+div#subcontents h3{
+	padding: 0.2em 0.4em;
+	border-bottom: solid 2px #EB6000;
+	display: inline-block;
+
 
 /*_____.footerArea_____*/
 div.footerArea {
