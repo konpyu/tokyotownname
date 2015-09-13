@@ -17,7 +17,9 @@ $(document).ready ->
       data:
         page: window.ttn_page + 1
       success: (result, textStatus, xhr) ->
-        window.ttn_page += 1
+        if result.is_last_page
+          $('#ttn-photos-paging').css('display', 'none')
+        window.ttn_page = result.page
         $element = $(result.html)
         $element.css('display', 'none')
         $container = $('#ttn-masonry-container')
