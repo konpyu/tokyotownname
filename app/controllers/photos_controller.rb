@@ -1,6 +1,9 @@
 class PhotosController < ApplicationController
   def index
-    @photos = Photo.all
+    @photos = Photo.includes(:image, :ward, :town).order(id: :desc).page(params[:page]).per(10)
+    if request.xhr?
+      render json: { html: photo_item_html, page: 2 }
+    end
   end
 
   def new
@@ -42,5 +45,9 @@ class PhotosController < ApplicationController
 
   def photo_params
     params.permit(:town_id, :ward_id, :comment)
+  end
+
+  def photo_item_html
+    render_to_string('top/_item', layout: false, formats: [:html])
   end
 end

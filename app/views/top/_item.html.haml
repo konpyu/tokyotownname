@@ -1,0 +1,12 @@
+- @photos.each do |photo|
+  .panel.panel-default.ttn-masonry-grid-item
+    .panel-body
+      = image_tag photo.image.image_url, { "data-toggle" => "modal", "data-target" => "#ttnPhotoDetailModal", "data-photo-id" => "#{Photo.first.id}"}
+      .panel-info
+        .panel-info-clm01
+          %p.townname
+            %span 世田谷区経堂
+          %p.username
+            %a Auther: Konpyu
+          %p.date
+            %a 2015/08/02 08:32
