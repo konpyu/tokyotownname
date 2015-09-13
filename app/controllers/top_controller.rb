@@ -1,6 +1,6 @@
 class TopController < ApplicationController
   def index
-    @photos = Photo.includes(:image, :ward, :town).order(id: :desc).limit(10)
+    @photos = Photo.includes(:image, :ward, :town).order(id: :desc).page(params[:page]).per(10)
 
     gon.photos = {}
     @photos.each do |photo|
