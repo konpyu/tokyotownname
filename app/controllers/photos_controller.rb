@@ -2,7 +2,7 @@ class PhotosController < ApplicationController
   def index
     @photos = Photo.includes(:image, :ward, :town).order(id: :desc).page(params[:page]).per(10)
     if request.xhr?
-      render json: { html: photo_item_html, page: 2 }
+      render json: { html: photo_item_html, page: @photos.current_page, is_last_page: @photos.last_page? }
     end
   end
 
