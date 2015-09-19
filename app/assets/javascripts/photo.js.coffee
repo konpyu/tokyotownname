@@ -8,6 +8,33 @@ $(document).ready ->
       return
   })
 
+  #stateChange = (state) ->
+  #  if state is 'ward'
+
+  # create new photo
+  $('.photo-new-ward').click ->
+    ward_id = $(this).data('id')
+    $list = $('#photo-new-choose-town').find('ul')
+    $list.empty()
+    for town in window.gon.wards[ward_id]["towns"]
+      townDom = $("<a>", {
+        addClass: "btn btn-default photo-new-town"
+        text: town.name
+        data:
+          id: town.id
+          town_name: town.name
+          ward_name: window.gon.wards[ward_id]["name"]
+        on:
+          click: ->
+            town_id   = $(this).data('id')
+            town_name = $(this).data('town_name')
+            ward_name = $(this).data('ward_name')
+            $("#photo-new-upload-town").text("#{ward_name}#{town_name}")
+            $("#photo-new-upload-photo").find("input[name=town_id]").val(town_id)
+            $("#photo-new-upload-photo").css("display","block")
+      })
+      $list.append(townDom)
+
   # paging
   $('#ttn-photos-paging').click ->
     window.ttn_page ||= 1

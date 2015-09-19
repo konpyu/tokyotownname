@@ -1,31 +1,49 @@
 - if current_user.present?
+  - Ward.all.each do |ward|
+    %input(type="hidden" value="#{ward.id}")
   %h1
-    Create New Photo
+    Choice Ward
 
-  = form_tag photos_path , multipart: true, method: :post do |f|
-    / ward
-    .photo-form-area
-      = label_tag :ward
-      = select_tag :ward_id, options_from_collection_for_select(Ward.all, "id", "name", 1)
+  %h2#photo-new-upload-town
 
-    / town
-    .photo-form-area
-      = label_tag :town
-      = select_tag :town_id, options_from_collection_for_select(Town.all, "id", "name", 1)
+  #photo-new-upload-photo(style="display:none")
+    = form_tag photos_path , multipart: true, method: :post do |f|
+      = hidden_field_tag :town_id, "", id: "hogehogehoge"
 
-    / photo
-    .photo-form-area
-      = label_tag :photo
-      = file_field_tag :photo, accept: 'image/png,image/gif,image/jpeg,image/jpg'
+      / photo
+      .photo-form-area
+        = label_tag :photo
+        = file_field_tag :photo, accept: 'image/png,image/gif,image/jpeg,image/jpg'
 
-    / comment
-    .photo-form-area
-      = label_tag :comment
-      = text_field_tag :comment
+      / comment
+      .photo-form-area
+        = label_tag :comment
+        = text_field_tag :comment
 
-    / button
-    .photo-form-area
-      = submit_tag :upload
+      / button
+      .photo-form-area
+        = submit_tag :upload
+
+
+
+  #photo-new-choose-town
+    %ul
+
+  %hr
+
+  #photo-new-choose-ward
+    - Ward.all.each do |ward|
+      %a.btn.btn-success.photo-new-ward(data-id="#{ward.id}")
+        = ward.name
+
+
+
 - else
   %h3
     まずはログインをおなしゃす
+    .hogehoge
+      %a
+        = link_to "Login Tw", "/auth/twitter"
+    .hogehoge
+      %a
+        = link_to "Login Fb", "/auth/facebook"
