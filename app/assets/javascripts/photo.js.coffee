@@ -17,7 +17,7 @@ $(document).ready ->
     $list = $('#photo-new-choose-town').find('ul')
     $list.empty()
     for town in window.gon.wards[ward_id]["towns"]
-      townDom = $("<a>", {
+      $("<a>", {
         addClass: "btn btn-default photo-new-town"
         text: town.name
         data:
@@ -32,8 +32,7 @@ $(document).ready ->
             $("#photo-new-upload-town").text("#{ward_name}#{town_name}")
             $("#photo-new-upload-photo").find("input[name=town_id]").val(town_id)
             $("#photo-new-upload-photo").css("display","block")
-      })
-      $list.append(townDom)
+      }).appendTo($list)
 
   # paging
   $('#ttn-photos-paging').click ->
