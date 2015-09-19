@@ -7,6 +7,16 @@ class PhotosController < ApplicationController
   end
 
   def new
+    gon.wards = {}
+    Ward.all.each do |ward|
+      gon.wards[ward.id] = {}
+      gon.wards[ward.id]["name"] = ward.name
+      gon.wards[ward.id]["post_num"] = ward.post_num
+      gon.wards[ward.id]["towns"] = []
+      ward.towns.each do |town|
+        gon.wards[ward.id]["towns"].push town
+      end
+    end
     @photo = Photo.new
   end
 
@@ -19,6 +29,7 @@ class PhotosController < ApplicationController
     raise "Error" unless params[:photo].present?
     ActiveRecord::Base.transaction do
       @photo = Photo.new(photo_params)
+      @photo.ward = Town.find(params[:town_id]).ward
       @photo.user = current_user
       @photo.save!
 
@@ -44,7 +55,7 @@ class PhotosController < ApplicationController
   private
 
   def photo_params
-    params.permit(:town_id, :ward_id, :comment)
+    params.permit(:town_id, :comment)
   end
 
   def photo_item_html
