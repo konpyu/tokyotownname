@@ -36,8 +36,8 @@
                 = link_to "About", about_path
               %li
                 = link_to "Search", achieve_path
-              %li
-                = link_to "Reporters", users_path
+              /%li
+              /  = link_to "Reporters", users_path
               - if current_user.present?
                 %li
                   = link_to "Upload", new_photo_path
