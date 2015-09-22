@@ -1,9 +1,17 @@
 #= require jquery
 #= require jquery_ujs
+#= require jquery-ui/ui/widget
 #= require bootstrap/dist/js/bootstrap
 #= require masonry/dist/masonry.pkgd
 #= require imagesloaded/imagesloaded
 #= require imgLiquid/js/imgLiquid
+#= require jquery-file-upload/js/jquery.iframe-transport
+#= require jquery-file-upload/js/jquery.fileupload
+#= require jquery-file-upload/js/jquery.fileupload-process
+#= require jquery-file-upload/js/jquery.fileupload-image
+#= require jquery-file-upload/js/jquery.fileupload-validate
+#= require jquery-file-upload/js/jquery.fileupload-video
+#= require jquery-file-upload/js/jquery.fileupload-ui
 
 #= require lives
 #= require comments
