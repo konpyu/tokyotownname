@@ -6,6 +6,16 @@ class PhotosController < ApplicationController
     end
   end
 
+  def upload
+    raise "not loggined" unless current_user.present?
+    image = Image.new
+    image.image = params[:photo]
+    image.user = current_user
+    image.kind = "photo"
+    image.save!
+    render json: { url: image.image_url, key: image.key, status: "ok" }
+  end
+
   def new
     gon.wards = {}
     Ward.all.each do |ward|
@@ -25,19 +35,18 @@ class PhotosController < ApplicationController
   end
 
   def create
-    # not gooo00d
-    raise "Error" unless params[:photo].present?
+    raise "Key is not specified" unless params[:key].present?
+    raise "not loggined" unless current_user.present?
+
     ActiveRecord::Base.transaction do
       @photo = Photo.new(photo_params)
       @photo.ward = Town.find(params[:town_id]).ward
       @photo.user = current_user
       @photo.save!
 
-      image = Image.new
-      image.user = current_user
-      image.image = params[:photo]
+      image = Image.find_by(key: params[:key])
+      raise "no image" if image.blank?
       image.imageable = @photo
-      image.kind = "photo"
       image.save!
     end
     redirect_to "/"

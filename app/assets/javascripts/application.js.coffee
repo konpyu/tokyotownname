@@ -5,6 +5,7 @@
 #= require masonry/dist/masonry.pkgd
 #= require imagesloaded/imagesloaded
 #= require imgLiquid/js/imgLiquid
+#= require blueimp-load-image/js/load-image.all.min
 #= require jquery-file-upload/js/jquery.iframe-transport
 #= require jquery-file-upload/js/jquery.fileupload
 #= require jquery-file-upload/js/jquery.fileupload-process

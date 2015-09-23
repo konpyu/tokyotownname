@@ -1,42 +1,50 @@
 - if current_user.present?
   - Ward.all.each do |ward|
     %input(type="hidden" value="#{ward.id}")
-  %h1
-    Choice Ward
 
   %h2#photo-new-upload-town
 
+  -# <input id="fileupload" type="file" name="files[]" multiple>
   #photo-new-upload-photo(style="display:none")
+    %h3 STEP3 画像を選択してください
     = form_tag photos_path , multipart: true, method: :post do |f|
       = hidden_field_tag :town_id, "", id: "hogehogehoge"
+      = hidden_field_tag :key, "", id: "photo-image-key"
 
       / photo
       .photo-form-area
-        = label_tag :photo
-        = file_field_tag :photo, accept: 'image/png,image/gif,image/jpeg,image/jpg'
+        %span.btn.btn-success#photo-new-upload-photo-button
+          %i.glyphicon.glyphicon-plus
+          %span 画像を選択
+          /%input(id="ttn-photo-fileupload" type="file" name="photo" accept="image/png,image/gif,image/jpeg,image/jpg")
+        %input(style="display:none" id="ttn-photo-fileupload" type="file" name="photo" accept="image/png,image/gif,image/jpeg,image/jpg")
 
-      / comment
-      .photo-form-area
-        = label_tag :comment
-        = text_field_tag :comment
+      .photo-form-upload-photo(style="display:none;")
+        %img(src="http://www.ebikes.ca/tripanalyzer/img/loading.jpg" style="width:200px;")
 
-      / button
-      .photo-form-area
-        = submit_tag :upload
+      .photo-form-after-upload-area(style="display:none")
+        / comment
+        .photo-form-area
+          = label_tag :comment
+          = text_field_tag :comment
 
+        / button
+        .photo-form-area
+          = submit_tag :upload, class: "btn btn-success"
 
+    %hr
 
-  #photo-new-choose-town
+  #photo-new-choose-town(style="display:none")
+    %h3 STEP2 町名を選択してください
     %ul
 
   %hr
 
   #photo-new-choose-ward
+    %h3 STEP1 区を選択してください
     - Ward.all.each do |ward|
       %a.btn.btn-success.photo-new-ward(data-id="#{ward.id}")
         = ward.name
-
-
 
 - else
   %h3
