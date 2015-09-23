@@ -66,6 +66,11 @@ $(document).ready ->
   }).on('fileuploadadd',  (e, data) ->
     $(".photo-form-upload-photo").css("display", "inline")
   ).on('fileuploadprocessalways', (e, data) ->
+  ).on('fileuploadprogressall', (e, data) ->
+    progress = parseInt(data.loaded / data.total * 100, 10)
+    $("#photo-new-upload-progressbar").css("width", "#{progress}%")
+    console.log progress
+
   ).on('fileuploaddone', (e, data) ->
     $(".photo-form-upload-photo").find("img").attr("src", data.result.url)
     $(".photo-form-after-upload-area").css("display", "inline")
