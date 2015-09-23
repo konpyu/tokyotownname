@@ -12,7 +12,11 @@ Rails.application.routes.draw do
       post :toggle, to: "lives#toggle_lives"
     end
   end
-  resources :photos
+  resources :photos do
+    collection do
+      post :upload, to: 'photos#upload'
+    end
+  end
   resources :towns, only: [:show, :index]
   resources :wards, only: [:show, :index]
   resources :users, only: [:show, :index]
