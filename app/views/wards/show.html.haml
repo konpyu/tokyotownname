@@ -5,7 +5,8 @@
     %h3
       = @ward.name
     %h5
-      = "投稿数 8"
+      /FIXME
+      = "投稿数 #{Photo.where(ward: @ward).count}"
 
 
 %hr

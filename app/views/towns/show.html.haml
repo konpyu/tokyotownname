@@ -1,14 +1,13 @@
 .row
   .col-md-2
-    %p img
+    = image_tag "/images/wards/101.png", style: "width:80%"
   .col-md-10
     %h3
       = @town.name
     %p
-      = "投稿数 42"
+      /FIXME
+      = "投稿数 #{Photo.where(town: @town).count}"
 
-    %h5
-      住んでた街: 三軒茶屋
 
 
 %hr
