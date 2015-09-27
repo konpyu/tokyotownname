@@ -5,6 +5,10 @@ class PagesController < ApplicationController
   def mypage
   end
 
+  def search
+    @wards = Ward.all
+  end
+
   def achieve
     # num = {}
     # arrs = Photo.pluck(:ward_id, :town_id)
