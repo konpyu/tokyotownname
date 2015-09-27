@@ -1,0 +1,7 @@
+
+- @wards.each do |ward|
+  %h3
+    = link_to ward.name, ward_path(ward)
+  - ward.towns.each do |town|
+    %span
+      = link_to town.name, town_path(town)
