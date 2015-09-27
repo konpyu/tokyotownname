@@ -7,10 +7,22 @@
       %li(role="presentation")
         %a(href="#choose" aria-controls="choose" role="tab" data-toggle="tab") 町名を選んでアップ
   .tab-content
-    %div.tab-pane.active#search(role="tabpanel")
-      %h1 Sekai No 尾張
-      <!-- WRITE ME! -->
 
+    %hr
+
+    %div.tab-pane.active#search(role="tabpanel")
+      .row
+        .col-md-5
+          %form
+            .form-group
+              %input.form-control(type="text" placeholder="町名を検索")
+      - Ward.all.each do |ward|
+        %h3.info
+          = ward.name
+        - ward.towns.each do |town|
+          %a
+            %span
+              = town.name
     %div.tab-pane#choose(role="tabpanel")
       -# upload by choose
       - Ward.all.each do |ward|
