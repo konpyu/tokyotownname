@@ -19,3 +19,4 @@
 #= require masonry
 #= require modal
 #= require photo
+#= require search
