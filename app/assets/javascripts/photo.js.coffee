@@ -107,3 +107,6 @@ $(document).ready ->
               $element.css('display', 'inline')
               $container.imagesLoaded ->
                 $container.masonry('appended', $element, true)
+                setTimeout ->
+                  uploading = false
+                , 400
