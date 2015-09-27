@@ -66,6 +66,7 @@ $(document).ready ->
   }).on('fileuploadadd',  (e, data) ->
     $(".photo-form-upload-photo").css("display", "inline")
   ).on('fileuploadprocessalways', (e, data) ->
+    $("#photo-new-upload-progressbar-message").css("display", "inline")
   ).on('fileuploadprogressall', (e, data) ->
     progress = parseInt(data.loaded / data.total * 100, 10)
     $("#photo-new-upload-progressbar").css("width", "#{progress}%")
@@ -75,6 +76,7 @@ $(document).ready ->
     $(".photo-form-upload-photo").find("img").attr("src", data.result.url)
     $(".photo-form-after-upload-area").css("display", "inline")
     $("#photo-image-key").val(data.result.key)
+    $("#photo-new-upload-progressbar-message").css("display", "none")
   ).on('fileuploadfail',  (e, data) ->
     alert("アップロードに失敗しました")
   )
