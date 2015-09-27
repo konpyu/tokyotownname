@@ -1,7 +1,20 @@
+%h2
+  まちを探す
 
-- @wards.each do |ward|
-  %h3
-    = link_to ward.name, ward_path(ward)
-  - ward.towns.each do |town|
-    %span
-      = link_to town.name, town_path(town)
+.row
+  .col-md-5
+    %form
+      .form-group
+        %input.form-control#searchtown(type="text" placeholder="町名を検索")
+
+#search-links
+  - @wards.each do |ward|
+    .search-links-ward-unit
+      %h3.search-ward-name
+        = link_to ward.name, ward_path(ward)
+      - ward.towns.each do |town|
+        %span.search-links-hoge(data-town-name="#{town.name}")
+          = link_to town.name, town_path(town)
+
+:javascript
+  new Search();
