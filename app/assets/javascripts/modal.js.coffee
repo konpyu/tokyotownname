@@ -20,6 +20,7 @@ $(document).ready ->
     $('#modal-photo-publish-date').text(photo.created_at)
     $('#modal-photo-town-name').text("#{photo.ward.name}#{photo.town.name}")
     $('#modal-photo-reporter-name').text(photo.user.name)
+    $('#modal-photo-comment').text(photo.comment)
     $('#modal-photo-reporter-img').attr("src", photo.user.image)
     $('#modal-photo-commentable-id').val(photo.id)
 
