@@ -23,7 +23,8 @@ class @Archive
 
     for i in [1..23]
       ctx = $('#lineChartCanvas-' + i)[0].getContext("2d")
-      data[0]["value"] = Math.floor(Math.random(100)* 100) + 100
+      data[0]["value"] = window.gon.archive[i]["value"]
+      data[1]["value"] = window.gon.archive[i]["max"]
       new Chart(ctx).Pie(data,options)
 
     return 1
