@@ -60,6 +60,49 @@ div#subcontents h3{
 }
 
 
+/******* search.html.haml *******/
+#search-links .search-links-ward-unit h3.search-ward-name {
+	font-size: 21px;
+}
+#search-links .search-links-ward-unit h3.search-ward-name img {
+	margin-right: 8px;
+	margin-bottom: 4px;
+}
+#search-links .search-links-ward-unit .select {
+	display: block;
+	overflow: hidden;
+}
+#search-links .search-links-ward-unit .select .search-links-hoge {
+	width: 160px;
+	display: inline-block;
+	float: left;
+	margin-bottom: 0.5em;
+}
+
+
+/******* new.html.haml *******/
+#search .row {
+	padding-top: 30px;
+}
+#search .select h3.info {
+	font-size: 21px;
+}
+#search .select h3.info img {
+	margin-right: 8px;
+	margin-bottom: 4px;
+}
+#search .select .townname {
+	display: block;
+	overflow: hidden;
+}
+#search .select .townname a {
+	width: 160px;
+	display: inline-block;
+	float: left;
+	margin-bottom: 0.5em;
+}
+
+
 /******* common *******/
 html, body {
 	height: 100%;
@@ -70,6 +113,15 @@ html, body {
 div#ttn-masonry-container {
 	margin: 0 auto;
 }
+a {
+	color: #EB6000;
+}
+a:hover {
+	color: #EB6000;
+	font-weight: bold;
+}
+
+
 
 /*_____.footerArea_____*/
 div.footerArea {

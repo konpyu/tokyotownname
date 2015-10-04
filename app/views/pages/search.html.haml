@@ -11,10 +11,12 @@
   - @wards.each do |ward|
     .search-links-ward-unit
       %h3.search-ward-name
+        %img(src="/images/wards/101.png" alt="101" style="width:40px;")
         = link_to ward.name, ward_path(ward)
-      - ward.towns.each do |town|
-        %span.search-links-hoge(data-town-name="#{town.name}")
-          = link_to town.name, town_path(town)
+      .select
+        - ward.towns.each do |town|
+          %span.search-links-hoge(data-town-name="#{town.name}")
+            = link_to town.name, town_path(town)
 
 :javascript
   new Search();
