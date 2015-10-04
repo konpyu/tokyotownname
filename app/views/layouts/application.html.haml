@@ -29,9 +29,8 @@
             %ul.nav.navbar-nav
               - unless current_user.present?
                 %li
-                  = link_to "Login Tw", "/auth/twitter"
-                %li
-                  = link_to "Login Fb", "/auth/facebook"
+                  %a(data-toggle="modal" data-target="#ttnEntryOrLoginModal")
+                    Entry/Login
               %li
                 = link_to "About", about_path
               %li
@@ -52,6 +51,19 @@
               %li
                 - if current_user.present?
                   = link_to image_tag(current_user.profile_image_url, class: "img-circle", style:"width:38px;"), mypage_path
+
+      .modal#ttnEntryOrLoginModal
+        .modal-dialog.modal-lg(role="document")
+          .modal-content
+            .row
+              .col-md-12
+                / TODO design
+                %h3
+                  お持ちのソーシャルアカウントで登録/ログイン
+                .hoge
+                  = link_to "Twitter", "/auth/twitter"
+                .fuga
+                  = link_to "Facebook", "/auth/facebook"
 
       .container
         = yield

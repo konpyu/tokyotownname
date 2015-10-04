@@ -1,4 +1,6 @@
 $(document).ready ->
+  $('#ttnEntryOrLoginModal').on 'show.bs.modal', (e) ->
+    console.log "Login"
   $('#ttnPhotoDetailModal').on 'show.bs.modal', (e) ->
 
     # init dom
