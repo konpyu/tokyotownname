@@ -13,6 +13,7 @@
 #= require jquery-file-upload/js/jquery.fileupload-validate
 #= require jquery-file-upload/js/jquery.fileupload-video
 #= require jquery-file-upload/js/jquery.fileupload-ui
+#= require Chart.js/Chart
 
 #= require lives
 #= require comments
