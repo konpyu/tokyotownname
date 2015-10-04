@@ -21,3 +21,4 @@
 #= require modal
 #= require photo
 #= require search
+#= require archive
