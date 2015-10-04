@@ -9,11 +9,11 @@
 
     %meta(content="東京の風景を集めます" name="description")
     %meta(content="TokyoTownName" property="og:site_name")
-    %meta(content="TokyoTownName" property="og:title")
-    %meta(content="https://www.tokyotownname.com" property="og:url")
-    %meta(content="https://ttn-new-dev.herokuapp.com/images/about/townimage.jpg" property="og:image")
+    %meta(content="#{@og_title}" property="og:title")
+    %meta(content="#{@og_url}" property="og:url")
+    %meta(content="#{@og_image}" property="og:image")
+    %meta(content="#{@og_description}" property="og:description")
     %meta(content="article" property="og:type")
-    %meta(content="東京の風景を集めます" property="og:description")
 
     / release
     %meta(name="robots" content="noindex")
