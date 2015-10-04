@@ -8,7 +8,7 @@
       = link_to ward.name, ward_path(ward)
     %canvas(id="lineChartCanvas-#{ward.id}" width="100" height="100")
     %p
-      34 / 123 23%
+      = "#{Photo.where(ward_id: ward.id).count} / #{Town.where(ward_id: ward.id).count} #{(Photo.where(ward_id: ward.id).count.to_f / Town.where(ward_id: ward.id).count.to_f * 100).to_i}%"
 
 :javascript
   new Archive();
