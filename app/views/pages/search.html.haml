@@ -15,7 +15,7 @@
         = link_to ward.name, ward_path(ward)
       .select
         - ward.towns.each do |town|
-          %span.search-links-hoge(data-town-name="#{town.name}")
+          %span.search-links-town-name(data-town-name="#{town.name}")
             = link_to town.name, town_path(town)
 
 :javascript
