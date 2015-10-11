@@ -22,3 +22,4 @@ class @Search
       $("#photo-new-upload-photo").css("display","block")
       $("#photo-new-upload-photo").find("input[name=town_id]").val(town_id)
       $("#photo-new-upload-town").text("#{ward_name}#{town_name}の写真をアップします")
+      $(window).scrollTop(0)
