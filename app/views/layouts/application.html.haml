@@ -7,6 +7,14 @@
 
     = csrf_meta_tags
 
+    %meta(content="東京の風景を集めます" name="description")
+    %meta(content="TokyoTownName" property="og:site_name")
+    %meta(content="#{@og_title}" property="og:title")
+    %meta(content="#{@og_url}" property="og:url")
+    %meta(content="#{@og_image}" property="og:image")
+    %meta(content="#{@og_description}" property="og:description")
+    %meta(content="article" property="og:type")
+
     / release
     %meta(name="robots" content="noindex")
     %meta{:content => "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0", :name => "viewport"}/
@@ -42,7 +50,7 @@
                   = link_to "Upload", new_photo_path
               - if current_user.present?
                 %li
-                  = link_to "Completion Rate", achieve_path
+                  = link_to "Progress", achieve_path
               %li
                 = link_to "Blog", "https://note.mu/tokyotownname", :target => "_blank"
 
