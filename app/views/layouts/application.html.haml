@@ -59,11 +59,12 @@
               .col-md-12
                 / TODO design
                 %h3
-                  お持ちのソーシャルアカウントで登録/ログイン
-                .hoge
-                  = link_to "Twitter", "/auth/twitter"
-                .fuga
-                  = link_to "Facebook", "/auth/facebook"
+                  お持ちのSNSアカウントで登録/ログイン
+                .login-area
+                  .btn_twt
+                    = link_to "Twitterでログイン", "/auth/twitter"
+                  .btn_fb
+                    = link_to "Facebookでログイン", "/auth/facebook"
 
       .container
         = yield
