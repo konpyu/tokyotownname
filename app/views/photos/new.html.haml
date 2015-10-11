@@ -1,5 +1,40 @@
 - if current_user.present?
 
+  #photo-new-upload-photo(style="display:none")
+    .jumbotron
+      %h2#photo-new-upload-town
+      = form_tag photos_path , multipart: true, method: :post do |f|
+        = hidden_field_tag :town_id, "", id: "hogehogehoge"
+        = hidden_field_tag :key, "", id: "photo-image-key"
+
+        / photo
+        .photo-form-area
+          %span.btn.btn-success#photo-new-upload-photo-button
+            %i.glyphicon.glyphicon-plus
+            %span 画像を選択
+            /%input(id="ttn-photo-fileupload" type="file" name="photo" accept="image/png,image/gif,image/jpeg,image/jpg")
+          %input(style="display:none" id="ttn-photo-fileupload" type="file" name="photo" accept="image/png,image/gif,image/jpeg,image/jpg")
+
+        %br
+        .photo-form-upload-photo(style="display:none;")
+          %img(src="http://www.ebikes.ca/tripanalyzer/img/loading.jpg" style="width:200px;")
+          .progress(style="width:200px")
+            .progress-bar#photo-new-upload-progressbar(role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100")
+          %span#photo-new-upload-progressbar-message(style="display:none") 画像変換処理中 Please wait...
+
+
+        .photo-form-after-upload-area(style="display:none")
+          / comment
+          .photo-form-area
+            .form-group
+              = label_tag :comment
+              = text_field_tag :comment, nil, class: "form-control show", placeholder: "コメントを追加"
+
+          / button
+          .photo-form-area
+            = submit_tag :upload, class: "btn btn-success"
+
+
   .tab-list
     %ul.nav.nav-tabs(role="tablist")
       %li.active(role="presentation")
@@ -9,69 +44,37 @@
   .tab-content
 
     %div.tab-pane.active#search(role="tabpanel")
+
       .row
         .col-md-5
           %form
             .form-group
-              %input.form-control(type="text" placeholder="町名を検索")
+              %input.form-control#searchtown(type="text" placeholder="町名を検索")
       .select
-        - Ward.all.each do |ward|
-          %h3.info
-            %img(src="/images/wards/101.png" alt="101" style="width:40px;")
-            = ward.name
-          .townname
-            - ward.towns.each do |town|
-              %a
-                %span
-                  = town.name
+        #search-links
+          - Ward.all.each do |ward|
+            .search-links-ward-unit
+              %h3.search-ward-name
+                %img(src="/images/wards/101.png" alt="101" style="width:40px;")
+                = ward.name
+              .select
+                - ward.towns.each do |town|
+                  %span.search-links-town-name.search-links-fugafuga(data-id="#{town.id}" data-town_name="#{town.name}" data-ward_name="#{ward.name}")
+                    = town.name
+
     %div.tab-pane#choose(role="tabpanel")
       -# upload by choose
       - Ward.all.each do |ward|
         %input(type="hidden" value="#{ward.id}")
 
-      %h2#photo-new-upload-town
-
-      #photo-new-upload-photo(style="display:none")
-        %h3 STEP3 画像を選択してください
-        = form_tag photos_path , multipart: true, method: :post do |f|
-          = hidden_field_tag :town_id, "", id: "hogehogehoge"
-          = hidden_field_tag :key, "", id: "photo-image-key"
-
-          / photo
-          .photo-form-area
-            %span.btn.btn-success#photo-new-upload-photo-button
-              %i.glyphicon.glyphicon-plus
-              %span 画像を選択
-              /%input(id="ttn-photo-fileupload" type="file" name="photo" accept="image/png,image/gif,image/jpeg,image/jpg")
-            %input(style="display:none" id="ttn-photo-fileupload" type="file" name="photo" accept="image/png,image/gif,image/jpeg,image/jpg")
-
-          .photo-form-upload-photo(style="display:none;")
-            %img(src="http://www.ebikes.ca/tripanalyzer/img/loading.jpg" style="width:200px;")
-            .progress(style="width:200px")
-              .progress-bar#photo-new-upload-progressbar(role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100")
-            %span#photo-new-upload-progressbar-message(style="display:none") 画像変換処理中 Please wait...
-
-
-          .photo-form-after-upload-area(style="display:none")
-            / comment
-            .photo-form-area
-              = label_tag :comment
-              = text_field_tag :comment
-
-            / button
-            .photo-form-area
-              = submit_tag :upload, class: "btn btn-success"
-
-        %hr
-
       #photo-new-choose-town(style="display:none")
-        %h3 STEP2 町名を選択してください
+        %h3 町名を選択してください
         %ul
 
       %hr
 
       #photo-new-choose-ward
-        %h3 STEP1 区を選択してください
+        %h3 区を選択してください
         - Ward.all.each do |ward|
           %a.btn.btn-success.photo-new-ward(data-id="#{ward.id}")
             = ward.name
@@ -85,3 +88,5 @@
     .hogehoge
       %a
         = link_to "Login Fb", "/auth/facebook"
+:javascript
+  new Search();
