@@ -68,12 +68,11 @@
                 / TODO design
                 %h3
                   お持ちのSNSアカウントで登録/ログイン
-                .login-area
-                  .btn_twt
-                    = link_to "Twitterでログイン", "/auth/twitter"
-                  .btn_fb
-                    = link_to "Facebookでログイン", "/auth/facebook"
-
+                %ul.login-area
+                  %li.btn_twt
+                    = link_to "Twitterアカウントでログイン", "/auth/twitter"
+                  %li.btn_fb
+                    = link_to "Facebookアカウントでログイン", "/auth/facebook"
       .container
         = yield
 
