@@ -103,6 +103,26 @@ div#subcontents h3{
 }
 
 
+/******* application.html.haml *******/
+#ttnEntryOrLoginModal h3 {
+	text-align: center;
+}
+#ttnEntryOrLoginModal .login-area {
+	margin: 0 auto;
+	display: block;
+}
+#ttnEntryOrLoginModal .login-area a {
+	color: #FFF;
+}
+#ttnEntryOrLoginModal .login-area .btn_twt{ 
+	background: #55acee;
+}
+#ttnEntryOrLoginModal .login-area .btn_fb {
+	background-color: #3b5988;
+}
+
+
+
 /******* common *******/
 html, body {
 	height: 100%;
