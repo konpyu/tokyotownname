@@ -32,6 +32,10 @@ class PhotosController < ApplicationController
 
   def show
     @photo = Photo.find(params[:id])
+    @og_title = "#{@photo.ward.name}#{@photo.town.name} | TokyoTownName"
+    @og_description = @photo.comment || "東京の風景を集めます"
+    @og_image = @photo.image.image_url
+    @og_url = photo_url(@photo)
   end
 
   def create
