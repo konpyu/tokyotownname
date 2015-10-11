@@ -104,21 +104,58 @@ div#subcontents h3{
 
 
 /******* application.html.haml *******/
+#ttnEntryOrLoginModal {
+	position: relative;
+	overflow: hidden;
+}
 #ttnEntryOrLoginModal h3 {
 	text-align: center;
+	margin: 50px 0 30px; 
 }
-#ttnEntryOrLoginModal .login-area {
-	margin: 0 auto;
+.clearfix:after{
+	content: "";
+	clear: both;
 	display: block;
 }
-#ttnEntryOrLoginModal .login-area a {
+#ttnEntryOrLoginModal .login-area {
+    list-style-type: none;
+    padding-left: 0;
+	font-size: 16px;
+	position: relative;
+	left: 50%;
+	float: left;
+	margin-bottom: 30px;
+}
+#ttnEntryOrLoginModal .login-area li {
+    position: relative;
+    left: -50%;
+    float: left;
+    text-align: center;
+    font-weight: bold;
+    margin: 10px;
+	-webkit-border-top-left-radius: 5px;  
+    -webkit-border-top-right-radius: 5px;  
+    -webkit-border-bottom-right-radius: 5px;  
+    -webkit-border-bottom-left-radius: 5px;  
+    -moz-border-radius-topleft: 5px;  
+    -moz-border-radius-topright: 5px;  
+    -moz-border-radius-bottomright: 5px;  
+    -moz-border-radius-bottomleft: 5px;  
+}
+#ttnEntryOrLoginModal .login-area li a{
+    width: 330px;
+    padding: 10px;
+    margin: 10px;
 	color: #FFF;
+	display: block;
 }
-#ttnEntryOrLoginModal .login-area .btn_twt{ 
+#ttnEntryOrLoginModal .login-area li.btn_twt{ 
 	background: #55acee;
+	width: 330px;
 }
-#ttnEntryOrLoginModal .login-area .btn_fb {
+#ttnEntryOrLoginModal .login-area li.btn_fb {
 	background-color: #3b5988;
+	width: 330px;
 }
 
 
