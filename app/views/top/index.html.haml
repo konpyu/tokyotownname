@@ -2,7 +2,8 @@
   - @photos.each do |photo|
     .panel.panel-default.ttn-masonry-grid-item
       .panel-body
-        = image_tag photo.image.image_url, { "data-toggle" => "modal", "data-target" => "#ttnPhotoDetailModal", "data-photo-id" => "#{photo.id}"}
+        .mouseon-transition
+          = image_tag photo.image.image_url, { "data-toggle" => "modal", "data-target" => "#ttnPhotoDetailModal", "data-photo-id" => "#{photo.id}"}
         .panel-info
           .panel-info-clm01
             %p.townname
