@@ -220,3 +220,12 @@ div.footerTextAreaWrap p.created {
 div.footerTextAreaWrap p.copyright {
 	float: right;
 }
+
+.mouseon-transition {
+    background-color: #000000;
+}
+
+.mouseon-transition img:hover {
+    opacity: 0.8;
+}
+
