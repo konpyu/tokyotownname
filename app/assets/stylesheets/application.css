@@ -121,15 +121,11 @@ div#subcontents h3{
     list-style-type: none;
     padding-left: 0;
 	font-size: 16px;
-	position: relative;
-	left: 50%;
-	float: left;
 	margin-bottom: 30px;
+	text-align: center;
 }
 #ttnEntryOrLoginModal .login-area li {
-    position: relative;
-    left: -50%;
-    float: left;
+	display: inline-block;
     text-align: center;
     font-weight: bold;
     margin: 10px;
@@ -142,22 +138,45 @@ div#subcontents h3{
     -moz-border-radius-bottomright: 5px;  
     -moz-border-radius-bottomleft: 5px;  
 }
-#ttnEntryOrLoginModal .login-area li a{
+#ttnEntryOrLoginModal .login-area li a {
     width: 330px;
     padding: 10px;
     margin: 10px;
 	color: #FFF;
 	display: block;
 }
-#ttnEntryOrLoginModal .login-area li.btn_twt{ 
+#ttnEntryOrLoginModal .login-area li.btn_twt { 
 	background: #55acee;
 	width: 330px;
+	position: relative;
+}
+#ttnEntryOrLoginModal .login-area li.btn_twt :after {
+	content: "";
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 40px;
+    height: 40px;
+    background-image: url(../images/common/icon_twitter.png);
+    background-repeat: no-repeat;
+    background-size: 40px 40px;
 }
 #ttnEntryOrLoginModal .login-area li.btn_fb {
 	background-color: #3b5988;
 	width: 330px;
+	position: relative;
 }
-
+#ttnEntryOrLoginModal .login-area li.btn_fb :after {
+	content: "";
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 30px;
+    height: 30px;
+    background-image: url(../images/common/icon_facebook.png);
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+}
 
 
 /******* common *******/
