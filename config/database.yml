@@ -52,3 +52,10 @@ production:
   database: tokyotownname_production
   username: tokyotownname
   password: <%= ENV['TOKYOTOWNNAME_DATABASE_PASSWORD'] %>
+
+old_production:
+  adapter:  postgresql
+  host:     ec2-50-19-219-235.compute-1.amazonaws.com
+  username: pzgmeerqjorqsu
+  password: SDl2_Du6jaK5ft0ZMOa1WSUUmY
+  database: d5n6373v208ugg

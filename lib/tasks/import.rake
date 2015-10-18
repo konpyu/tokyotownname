@@ -1,7 +1,7 @@
 require "active_record"
 
 namespace :import do
-  desc "delete"
+  desc "delete all records"
   task delete: :environment do
     Authentication.delete_all
     Comment.delete_all
@@ -13,25 +13,10 @@ namespace :import do
     User.delete_all
   end
 
-  desc "fix ward id"
-  task fix_ward_id: :environment do
-    Photo.all.each do |photo|
-      photo.ward_id = photo.ward_id.to_i - 100
-      photo.save!
-    end
-  end
-
-  desc "auth"
-  task auth: :environment do
-
+  desc "import table: authentications"
+  task authentications: :environment do
     class OldAuthentication < ActiveRecord::Base
-      establish_connection(
-        adapter:  "postgresql",
-        host:     "ec2-50-19-219-235.compute-1.amazonaws.com",
-        username: "pzgmeerqjorqsu",
-        password: "SDl2_Du6jaK5ft0ZMOa1WSUUmY",
-        database: "d5n6373v208ugg",
-      )
+      establish_connection :old_production
       self.table_name = 'authentications'
     end
     OldAuthentication.all.each do |auth|
@@ -52,72 +37,23 @@ namespace :import do
         updated_at:  auth.updated_at,
       )
     end
-
   end
 
-  desc "image"
-  task watch: :environment do
+  desc "import table: images"
+  task image: :environment do
+    Image.delete_all
     class OldImage < ActiveRecord::Base
-      establish_connection(
-        adapter:  "postgresql",
-        host:     "ec2-50-19-219-235.compute-1.amazonaws.com",
-        username: "pzgmeerqjorqsu",
-        password: "SDl2_Du6jaK5ft0ZMOa1WSUUmY",
-        database: "d5n6373v208ugg",
-      )
+      establish_connection :old_production
       self.table_name = 'images'
     end
-
-    OldImage.all.each do |image|
-      hoge = Image.find(image.id)
-      p image.image
-      hoge.image = image.image
-      hoge.save!
-    end
-  end
-
-
-
-
-
-
-
-  desc "Linking"
-  task linking: :environment do
-
     class OldPhoto < ActiveRecord::Base
-      establish_connection(
-        adapter:  "postgresql",
-        host:     "ec2-50-19-219-235.compute-1.amazonaws.com",
-        username: "pzgmeerqjorqsu",
-        password: "SDl2_Du6jaK5ft0ZMOa1WSUUmY",
-        database: "d5n6373v208ugg",
-      )
+      establish_connection :old_production
       self.table_name = 'photos'
     end
-    OldPhoto.all.each do |photo|
-      image_id = photo.image_id
-      image = Image.find(image_id)
-      image.imageable_id = photo.id
-      image.save!
-    end
 
-  end
-
-  desc "image"
-  task image: :environment do
-    class OldImage < ActiveRecord::Base
-      establish_connection(
-        adapter:  "postgresql",
-        host:     "ec2-50-19-219-235.compute-1.amazonaws.com",
-        username: "pzgmeerqjorqsu",
-        password: "SDl2_Du6jaK5ft0ZMOa1WSUUmY",
-        database: "d5n6373v208ugg",
-      )
-      self.table_name = 'images'
-    end
-
+    map = {}
     OldImage.all.each do |image|
+      map[image.id] = image.image
       Image.create!(
         id: image.id,
         image: image.image,
@@ -127,23 +63,26 @@ namespace :import do
         imageable_id: 1,
       )
     end
+    OldPhoto.all.each do |photo|
+      image_id = photo.image_id
+      image = Image.find(image_id)
+      image.imageable_id = photo.id
+      image.save!
+    end
+    map.each do |id, image|
+      ActiveRecord::Base.connection.execute("update images set image='#{image}' where id=#{id}")
+    end
   end
 
-  desc "fuga"
+  desc "import table: users"
   task user: :environment do
     class OldUser < ActiveRecord::Base
-      establish_connection(
-        adapter:  "postgresql",
-        host:     "ec2-50-19-219-235.compute-1.amazonaws.com",
-        username: "pzgmeerqjorqsu",
-        password: "SDl2_Du6jaK5ft0ZMOa1WSUUmY",
-        database: "d5n6373v208ugg",
-      )
+      establish_connection :old_production
       self.table_name = 'users'
     end
 
     OldUser.all.each do |user|
-      User.create(
+      User.create!(
         id: user.id,
         name: user.name,
         image: user.image,
@@ -153,26 +92,30 @@ namespace :import do
         updated_at: user.updated_at,
       )
     end
-
   end
 
-  desc "hoge"
+  desc "import table: photos"
   task photo: :environment do
-
     class OldPhoto < ActiveRecord::Base
-      establish_connection(
-        adapter:  "postgresql",
-        host:     "ec2-50-19-219-235.compute-1.amazonaws.com",
-        username: "pzgmeerqjorqsu",
-        password: "SDl2_Du6jaK5ft0ZMOa1WSUUmY",
-        database: "d5n6373v208ugg",
-      )
+      establish_connection :old_production
       self.table_name = 'photos'
     end
 
     OldPhoto.all.each do |photo|
-      Photo.create(id: photo.id, town_id: photo.town_id, ward_id: photo.ward_id, user_id: photo.user_id, comment: photo.comment, created_at: photo.created_at, updated_at: photo.updated_at)
+      Photo.create!(
+        id: photo.id,
+        town_id: photo.town_id,
+        ward_id: photo.ward_id,
+        user_id: photo.user_id,
+        comment: photo.comment,
+        created_at: photo.created_at,
+        updated_at: photo.updated_at
+      )
     end
 
+    Photo.all.each do |photo|
+      photo.ward_id = photo.ward_id.to_i - 100
+      photo.save!
+    end
   end
 end
