@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   end
 
   def search
-    @wards = Ward.all
+    @wards = Ward.all.includes(:towns)
   end
 
   def achieve
