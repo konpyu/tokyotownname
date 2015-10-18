@@ -18,7 +18,8 @@ class PhotosController < ApplicationController
 
   def new
     gon.wards = {}
-    Ward.all.each do |ward|
+    @photos = Ward.all.includes(:towns)
+    @photos.each do |ward|
       gon.wards[ward.id] = {}
       gon.wards[ward.id]["name"] = ward.name
       gon.wards[ward.id]["post_num"] = ward.post_num

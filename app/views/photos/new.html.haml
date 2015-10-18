@@ -52,10 +52,10 @@
               %input.form-control#searchtown(type="text" placeholder="町名を検索")
       .select
         #search-links
-          - Ward.all.each do |ward|
+          - @photos.each do |ward|
             .search-links-ward-unit
               %h3.search-ward-name
-                %img(src="/images/wards/101.png" alt="101" style="width:40px;")
+                %img(src="#{ward_image(ward.id)}" alt="101" style="width:40px;")
                 = ward.name
               .select
                 - ward.towns.each do |town|
