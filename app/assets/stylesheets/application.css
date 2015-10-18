@@ -101,7 +101,51 @@ div#subcontents h3{
 	float: left;
 	margin-bottom: 0.5em;
 }
-
+#photo-new-choose-ward h3 {
+	margin: 20px 0;
+}
+#photo-new-choose-ward a {
+	display: inline-block;
+	font-size: 18px;
+	width: 170px;
+	text-align: left;
+	padding: 10px 0;
+	color: #EB6000;
+}
+#photo-new-choose-ward a:hover {
+	text-decoration: underline;
+}
+#photo-new-choose-ward a img {
+	padding-right: 10px;
+}
+#photo-new-choose-town .townhogehogearea {
+	display: block;
+}
+#photo-new-choose-town .townhogehogearea h3 {
+	margin: 20px 0;
+}
+#photo-new-choose-town .townhogehogearea a {
+	display: inline-block;
+	font-size: 18px;
+	width: 170px;
+	text-align: left;
+	padding: 10px 0;
+}
+#photo-new-upload-photo .jumbotron {
+	text-align: center;
+}
+#photo-new-upload-photo .jumbotron h2 {
+	margin-bottom: 20px;
+	font-size: 20px;
+}
+#photo-new-upload-photo .jumbotron .photo-form-area .btn {
+	color: #fff;
+	font-size: 16px;
+	font-weight: bold;
+    background-color: #EB6000;
+    border-color: #EB6000;
+    width: 50%;
+}
 
 /******* application.html.haml *******/
 #ttnEntryOrLoginModal {
@@ -218,7 +262,7 @@ div.footerImageArea {
 div.footerTextArea {
 	width: 100%;
 	height: 25px;
-	background-color: #F5AE7E;
+	background-color: #FFB07A;
 	position: absolute;;
 	bottom: 0;
 }
