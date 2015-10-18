@@ -69,6 +69,18 @@
 
       #photo-new-choose-town(style="display:none")
         %h3 町名を選択してください
+        .townhogehogearea
+          %a 池袋
+          %a hogehoge
+          %a hogehoge
+          %a hogehoge
+          %a hogehoge
+          %a hogehoge
+          %a hogehoge
+          %a hogehoge
+          %a hogehoge
+          %a hogehoge
+          %a hogehoge
         %ul
 
       %hr
@@ -76,7 +88,8 @@
       #photo-new-choose-ward
         %h3 区を選択してください
         - Ward.all.each do |ward|
-          %a.btn.btn-success.photo-new-ward(data-id="#{ward.id}")
+          %a.photo-new-ward(data-id="#{ward.id}")
+            %img(src="#{ward_image(ward.id)}" alt="101" style="width:40px;")
             = ward.name
 
 - else
