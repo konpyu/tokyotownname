@@ -84,6 +84,14 @@ div#subcontents h3{
 #search .row {
 	padding-top: 30px;
 }
+#search .row .col-md-5 {
+	width: 100%;
+}
+.tab-list .nav li {
+	width: 50%;
+	font-size: 16px;
+	text-align: center;
+}
 #search .select h3.info {
 	font-size: 21px;
 }
@@ -146,6 +154,10 @@ div#subcontents h3{
     border-color: #EB6000;
     width: 50%;
 }
+#photo-new-upload-photo .jumbotron .photo-form-area .btn:hover {
+	opacity: 0.8;
+}
+
 
 /******* application.html.haml *******/
 #ttnEntryOrLoginModal {
@@ -245,6 +257,7 @@ a:hover {
 
 /*_____.footerArea_____*/
 div.footerArea {
+	display: block;
 	width: 100%;
 	height: 90px;
 	position: absolute;
@@ -267,15 +280,15 @@ div.footerTextArea {
 	bottom: 0;
 }
 div.footerTextAreaWrap {
-	width: 1000px;
-	margin: 0 auto;
+	width: 100%;
+	margin: 0.5em auto 0;
+	padding: 0 5%;
 	color: #FFF;
 	clear: both;
 }
 div.footerTextAreaWrap p {
 	margin-top: 0.5em;
 	font-size: 12px;
-	font-weight: lighter;
 }
 div.footerTextAreaWrap p.created {
 	float: left;
