@@ -4893,11 +4893,9 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 }
 .label {
   display: inline;
-  padding: .2em .6em .3em;
+  padding: .2em .6em;
   font-size: 75%;
   font-weight: bold;
-  line-height: 1;
-  color: #fff;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
@@ -4943,10 +4941,6 @@ a.label:focus {
 .label-info[href]:hover,
 .label-info[href]:focus {
   background-color: #31b0d5;
-}
-.label-warning {
-  background-color: #f0ad4e;
-  margin-right: 5px;
 }
 .label-warning[href]:hover,
 .label-warning[href]:focus {
@@ -5757,12 +5751,10 @@ button.list-group-item-danger.active:focus {
 }
 .panel-default > .panel-body > .panel-info {
   width: 334px;
-  height: 100px; padding: 10px 10px 0;
-  bottom: -62px;
+  height: 100%;
   position: absolute;
-  background-color:  rgba( 255, 255, 255, 0.7 );
-  -webkit-transition: .3s;
-  transition: .3s;
+  top: 0;
+  left: 0;
 }
 .panel-default > .panel-body:hover > .panel-info {
   bottom: 2px;
@@ -5770,18 +5762,55 @@ button.list-group-item-danger.active:focus {
 .panel-default > .panel-body > .panel-info > .panel-info-clm01 {
   overflow: hidden;
 }
-.panel-default > .panel-body > .panel-info > .panel-info-clm01 p.townname {
-  float: left;
+.panel-default > .panel-body > .panel-info > .panel-info-clm01 .townname-area {
+  width: auto;
+  font-size: 14px;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  background-color: rgba(255,255,255,0.9);
+  padding: 0 4px 2px;
+}
+.panel-default > .panel-body > .panel-info > .panel-info-clm01 .townname-area .townname a {
+  color: #000;
+}
+.panel-default > .panel-body > .panel-info > .panel-info-clm01 .townname-area .icon-new {
+  color: #fff;
+  background-color: #EB6000;
+  margin-right: 5px;
+  padding: .2em .6em;
+  font-size: 3px;
   font-weight: bold;
+  text-align: center;
+  border-radius: .25em;
 }
-.panel-default > .panel-body > .panel-info > .panel-info-clm01 p.username {
-  float: right;
+.panel-default > .panel-body > .panel-info > .panel-info-clm01 .username {
+  position: absolute;
+  top: 8px;
+  right: 5px;
 }
-.panel-default > .panel-body > .panel-info > a.btn_delete {
-  float: right;
+.panel-default > .panel-body > .panel-info > .btn_delete a {
+  color: #fff;
+  position: absolute;
+  margin: 0;
+  bottom: 6px;
+  right: 2px;
+  border: solid 1px #fff;
+  padding: .2em .6em;
+  font-size: 3px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: .25em;
 }
-.panel-default > .panel-body > .panel-info > p.date {
-  float: right;
+.panel-default > .panel-body > .panel-info > .date {
+  position: absolute;
+  font-size: 14px;
+  margin: 0;
+  bottom: 5px;
+  left: 10px;
+}
+.panel-default > .panel-body > .panel-info > .date a {
+  color: #fff;
 }
 .panel-primary {
   border-color: #337ab7;
