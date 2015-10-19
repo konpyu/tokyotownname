@@ -13,8 +13,9 @@
               %span.townname
                 %a
                   = "#{photo.ward.name}#{photo.town.name}"
-            %p.username
-              = link_to image_tag(current_user.profile_image_url, class: "img-circle", style:"width:30px;"), mypage_path
+            - if current_user.present?
+              %p.username
+                = link_to image_tag(current_user.profile_image_url, class: "img-circle", style:"width:30px;"), mypage_path
           %p.date
             = link_to photo.created_at.strftime("%Y/%m/%d %H:%M"), photo_path(photo)
           - if current_user.present? && photo.user == current_user
