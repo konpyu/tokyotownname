@@ -10,7 +10,15 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   process :strip
   process :set_metadata
-  process quality:  80
+  process quality:  85
+
+  version :thumb do
+    process :resize_to_fit => [330, 330]
+  end
+
+  version :pickup do
+    process :resize_to_fit => [800, 800]
+  end
 
   def extension_white_list
     %w(jpg jpeg gif png)
