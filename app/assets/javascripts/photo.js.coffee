@@ -76,6 +76,7 @@ $(document).ready ->
           data:
             page: window.ttn_page + 1
           success: (result, textStatus, xhr) ->
+            console.log "---------- ajax completed ----------"
             if result.is_last_page
               $('#ttn-photos-paging').css('display', 'none')
             window.ttn_page = result.page
