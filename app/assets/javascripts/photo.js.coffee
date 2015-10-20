@@ -68,6 +68,7 @@ $(document).ready ->
     scrollPosition = $(window).height() + $(window).scrollTop()
     if (scrollHeight - scrollPosition) < (scrollHeight * 0.03)
       unless uploading
+        $('#loading-footer').css('display', 'inline')
         uploading = true
         window.ttn_page ||= 1
         $.ajax
@@ -76,9 +77,8 @@ $(document).ready ->
           data:
             page: window.ttn_page + 1
           success: (result, textStatus, xhr) ->
-            console.log "---------- ajax completed ----------"
             if result.is_last_page
-              $('#ttn-photos-paging').css('display', 'none')
+              $('#loading-footer').css('display', 'none')
             window.ttn_page = result.page
             $element = $(result.html)
             $element.css('display', 'none')
