@@ -2,14 +2,8 @@ $(document).ready ->
   $(".ttn_photo_show_image").imgLiquid({
     fill: false
     onItemError: (a,b,c) ->
-      console.log a
-      console.log b
-      console.log c
       return
   })
-
-  #stateChange = (state) ->
-  #  if state is 'ward'
 
   # create new photo
   $('.photo-new-ward').click ->
@@ -34,7 +28,6 @@ $(document).ready ->
             $("#photo-new-upload-photo").find("input[name=town_id]").val(town_id)
             $("#photo-new-upload-photo").css("display","block")
       }).appendTo($list)
-
 
   $("#photo-new-upload-photo-button").click ->
     $("#ttn-photo-fileupload").click()
@@ -81,7 +74,6 @@ $(document).ready ->
           success: (result, textStatus, xhr) ->
             if result.is_last_page
               is_last_page = true
-            $('#loading-footer').css('display', 'none')
             window.ttn_page = result.page
             $element = $(result.html)
             $element.css('display', 'none')
@@ -89,6 +81,7 @@ $(document).ready ->
             $container.append($element)
             $container.imagesLoaded ->
               $element.css('display', 'inline')
+              $('#loading-footer').css('display', 'none')
               $container.imagesLoaded ->
                 $container.masonry('appended', $element, true)
                 setTimeout ->
