@@ -63,12 +63,14 @@ $(document).ready ->
 
   #- auto pager
   uploading = false
+  is_last_page = false
   $(window).bind 'scroll', ->
     scrollHeight = $(document).height()
     scrollPosition = $(window).height() + $(window).scrollTop()
     if (scrollHeight - scrollPosition) < (scrollHeight * 0.03)
       unless uploading
-        $('#loading-footer').css('display', 'inline')
+        unless is_last_page
+          $('#loading-footer').css('display', 'inline')
         uploading = true
         window.ttn_page ||= 1
         $.ajax
@@ -78,7 +80,8 @@ $(document).ready ->
             page: window.ttn_page + 1
           success: (result, textStatus, xhr) ->
             if result.is_last_page
-              $('#loading-footer').css('display', 'none')
+              is_last_page = true
+            $('#loading-footer').css('display', 'none')
             window.ttn_page = result.page
             $element = $(result.html)
             $element.css('display', 'none')
