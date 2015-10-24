@@ -5750,14 +5750,7 @@ button.list-group-item-danger.active:focus {
   overflow: hidden;
 }
 .panel-default > .panel-body > .panel-info {
-  width: 334px;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.panel-default > .panel-body:hover > .panel-info {
-  bottom: 2px;
+  position: static;
 }
 .panel-default > .panel-body > .panel-info > .panel-info-clm01 {
   overflow: hidden;
@@ -5779,7 +5772,7 @@ button.list-group-item-danger.active:focus {
   background-color: #EB6000;
   margin-right: 5px;
   padding: .2em .6em;
-  font-size: 3px;
+  font-size: 70%;
   font-weight: bold;
   text-align: center;
   border-radius: .25em;
@@ -5787,17 +5780,19 @@ button.list-group-item-danger.active:focus {
 .panel-default > .panel-body > .panel-info > .panel-info-clm01 .username {
   position: absolute;
   top: 8px;
+  right: 8px;
+}
+.panel-default > .panel-body > .panel-info > .btn_delete {
+  position: absolute;
+  margin: 0;
+  bottom: 6px;
   right: 5px;
 }
 .panel-default > .panel-body > .panel-info > .btn_delete a {
   color: #fff;
-  position: absolute;
-  margin: 0;
-  bottom: 6px;
-  right: 2px;
   border: solid 1px #fff;
   padding: .2em .6em;
-  font-size: 3px;
+  font-size: 70%;
   font-weight: bold;
   text-align: center;
   border-radius: .25em;
