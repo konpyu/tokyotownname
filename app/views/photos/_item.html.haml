@@ -1,6 +1,7 @@
 .panel-body
   .mouseon-transition
-    = image_tag photo.image.image.pickup.url, { "data-toggle" => "modal", "data-target" => "#ttnPhotoDetailModal", "data-photo-id" => "#{photo.id}"}
+    = link_to image_tag(photo.image.image.thumb.url), photo_path(photo)
+    /= image_tag photo.image.image.pickup.url, { "data-toggle" => "modal", "data-target" => "#ttnPhotoDetailModal", "data-photo-id" => "#{photo.id}"}
   .panel-info
     .panel-info-clm01
       %p.townname-area
