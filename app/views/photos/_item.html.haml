@@ -8,8 +8,7 @@
           %span.icon-new
             NEW
         %span.townname
-          %a
-            = "#{photo.ward.name}#{photo.town.name}"
+          = link_to "#{photo.ward.name}#{photo.town.name}", town_path(photo.town)
       %p.username
         = link_to image_tag(photo.user.profile_image_url, class: "img-circle", style:"width:30px;"), mypage_path
     %p.date
