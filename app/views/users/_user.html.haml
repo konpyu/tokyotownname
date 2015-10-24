@@ -7,11 +7,8 @@
     %h5
       = "投稿数 #{user.photos.count}"
 
-    %h5
-      住んでた街: 三軒茶屋
-
 %hr
 .row
   / TODO: masonryにする
   - user.photos.each do |photo|
-    = image_tag photo.image.image.pickup.url, style: "width:200px"
+    = link_to image_tag(photo.image.image.pickup.url, style: "width:200px"), photo_path(photo)

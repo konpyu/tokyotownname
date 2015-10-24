@@ -13,4 +13,4 @@
 .row
   / TODO: masonryにする
   - @ward.photos.each do |photo|
-    = image_tag photo.image.image.pickup.url, style: "width:200px"
+    = link_to image_tag(photo.image.image.pickup.url, style: "width:200px"), photo_path(photo)
