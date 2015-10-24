@@ -6,9 +6,8 @@
     %h3
       = "#{@photo.ward.name}#{@photo.town.name}"
     %p.text-muted
-      = @photo.created_at.strftime("%Y/%m/%d %H:%M")
+      = time_ago_in_words(@photo.created_at) + " ago"
     %hr
-    %h4 Reporter
     = image_tag @photo.user.authentication.image, class: "img-circle", style:"width:40px"
     = link_to "#{@photo.user.name}さん", user_path(@photo.user)
 
