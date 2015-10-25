@@ -5797,6 +5797,9 @@ button.list-group-item-danger.active:focus {
   text-align: center;
   border-radius: .25em;
 }
+.panel-default > .panel-body > .panel-info > .btn_delete a:hover {
+  background-color: rgba(0,0,0,0.2);
+}
 .panel-default > .panel-body > .panel-info > .date {
   position: absolute;
   font-size: 14px;
