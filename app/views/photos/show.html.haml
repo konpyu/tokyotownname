@@ -55,9 +55,9 @@
             ログイン
         %span
             をするとコメントができるようになります
-    %a(href="https://twitter.com/share" class="twitter-share-button" data-url="http://tokyotownname.com" data-via="konpyu" data-lang="ja")
+    %a(href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.tokyotownname.com" data-via="konpyu" data-lang="ja")
       ツイート
-
+    .fb-share-button(data-href="#{request.url}" data-layout="button_count")
 :javascript
   // temporary
   !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
