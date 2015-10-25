@@ -1,24 +1,7 @@
 %div#ttn-masonry-container
   - @photos.each do |photo|
     .panel.panel-default.ttn-masonry-grid-item
-      .panel-body
-        = link_to image_tag(photo.image.image.pickup.url), photo_path(photo)
-        /= image_tag photo.image.image.pickup.url, { "data-toggle" => "modal", "data-target" => "#ttnPhotoDetailModal", "data-photo-id" => "#{photo.id}"}
-        .panel-info
-          .panel-info-clm01
-            %p.townname-area
-              - if Time.now.ago(14.days) <= photo.created_at
-                %span.icon-new
-                  NEW
-              %span.townname
-                = link_to "#{photo.ward.name}#{photo.town.name}", town_path(photo.town)
-            %p.username
-              = link_to image_tag(photo.user.profile_image_url, class: "img-circle", style:"width:30px;"), user_path(photo.user)
-          %p.date
-            = link_to photo.created_at.strftime("%Y/%m/%d %H:%M"), photo_path(photo)
-          - if current_user.present? && photo.user == current_user
-            %p.btn_delete
-              = link_to "Delete", photo_path(photo), method: :delete, data: {confirm: '消しますがよいですか?'}
+      = render partial: 'photos/item', locals: { photo: photo }
 
 / FIXME: 仮置き
 %div#loading-footer(style="display:none;z-index: 20000;width:100%;height:100px;background-color:orange;position:fixed;bottom:0;opacity:0.7")

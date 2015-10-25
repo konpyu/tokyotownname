@@ -1,21 +1,3 @@
 - @photos.each do |photo|
   .panel.panel-default.ttn-masonry-grid-item
-    .panel-body
-      .mouseon-transition
-        = image_tag photo.image.image.pickup.url, { "data-toggle" => "modal", "data-target" => "#ttnPhotoDetailModal", "data-photo-id" => "#{photo.id}"}
-      .panel-info
-        .panel-info-clm01
-          %p.townname-area
-            - if Time.now.ago(14.days) <= photo.created_at
-              %span.icon-new
-                NEW
-            %span.townname
-              %a
-                = "#{photo.ward.name}#{photo.town.name}"
-          %p.username
-            = link_to image_tag(photo.user.profile_image_url, class: "img-circle", style:"width:30px;"), mypage_path
-        %p.date
-          = link_to photo.created_at.strftime("%Y/%m/%d %H:%M"), photo_path(photo)
-        - if current_user.present? && photo.user == current_user
-          %p.btn_delete
-            = link_to "Delete", photo_path(photo), class:"hoge fuga", method: :delete, data: {confirm: '消しますがよいですか?'}
+    = render partial: 'photos/item', locals: { photo: photo }
