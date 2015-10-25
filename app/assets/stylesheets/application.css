@@ -254,6 +254,22 @@ a:hover {
 }
 
 
+/*_____#loading-footer_____*/
+div#loading-footer {
+	display: none;
+	z-index: 20000;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	opacity: 0.7;
+}
+div#loading-footer h3 {
+	text-align: center;
+	color: #fff;
+	background-color: #EB6000;
+	padding: 0.3em;
+}
+
 
 /*_____.footerArea_____*/
 div.footerArea {
@@ -295,12 +311,4 @@ div.footerTextAreaWrap p.created {
 }
 div.footerTextAreaWrap p.copyright {
 	float: right;
-}
-
-.mouseon-transition {
-    background-color: #000000;
-}
-
-.mouseon-transition img:hover {
-    opacity: 0.8;
 }
