@@ -46,8 +46,6 @@
           = text_field_tag :comment, nil, class: "form-control show", placeholder: "コメントを追加"
         = hidden_field_tag :commentable, @photo.class.name
         = hidden_field_tag :commentable_id, @photo.id
-        .form-group
-          = submit_tag "Submit!", class: "btn btn-default"
     - else
       .not-login-comment-form(style="margin-bottom: 20px")
         %span
