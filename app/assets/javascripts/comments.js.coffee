@@ -14,6 +14,6 @@ class @Comments
 
   addCommentToList: (xhr, data, status, res) ->
     if res.status is 201
-      apnd = "<p><span class='text-info'>konpyu</span> #{data.comment.comment} <a>delete</a></p>"
+      apnd = "<li><span class='text-info'>konpyu</span> #{data.comment.comment} <a>delete</a></li>"
       $("#comment-list").append(apnd)
-      # $("#comment-count").text("3 comments")
+      $(".form-control").val("")
