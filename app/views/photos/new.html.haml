@@ -89,7 +89,8 @@
         %h3 区を選択してください
         - Ward.all.each do |ward|
           %a.photo-new-ward(data-id="#{ward.id}")
-            %img(src="#{ward_image(ward.id)}" alt="101" style="width:40px;")
+            %span
+              %img(src="#{ward_image(ward.id)}" alt="101" style="width:40px;")
             = ward.name
 
 - else
