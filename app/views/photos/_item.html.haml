@@ -1,0 +1,19 @@
+.panel-body
+  .mouseon-transition
+    = link_to image_tag(photo.image.image.thumb.url), photo_path(photo)
+    /= image_tag photo.image.image.pickup.url, { "data-toggle" => "modal", "data-target" => "#ttnPhotoDetailModal", "data-photo-id" => "#{photo.id}"}
+  .panel-info
+    .panel-info-clm01
+      %p.townname-area
+        - if Time.now.ago(7.days) <= photo.created_at
+          %span.icon-new
+            NEW
+        %span.townname
+          = link_to "#{photo.ward.name}#{photo.town.name}", town_path(photo.town)
+      %p.username
+        = link_to image_tag(photo.user.profile_image_url, class: "img-circle", style:"width:30px;"), mypage_path
+    %p.date
+      = link_to time_ago_in_words(photo.created_at), photo_path(photo)
+    - if current_user.present? && photo.user == current_user
+      %p.btn_delete
+        = link_to "Delete", photo_path(photo), class:"hoge fuga", method: :delete, data: {confirm: '消しますがよいですか?'}
