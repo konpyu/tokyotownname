@@ -10,13 +10,13 @@ class PhotosController < ApplicationController
   end
 
   def upload
-    raise "not loggined" unless current_user.present?
+    raise 'not loggined' unless current_user.present?
     image = Image.new
     image.image = params[:photo]
     image.user = current_user
-    image.kind = "photo"
+    image.kind = 'photo'
     image.save!
-    render json: { url: image.image_url, key: image.key, status: "ok" }
+    render json: { url: image.image_url, key: image.key, status: 'ok' }
   end
 
   def new
@@ -24,11 +24,11 @@ class PhotosController < ApplicationController
     @photos = Ward.all.includes(:towns)
     @photos.each do |ward|
       gon.wards[ward.id] = {}
-      gon.wards[ward.id]["name"] = ward.name
-      gon.wards[ward.id]["post_num"] = ward.post_num
-      gon.wards[ward.id]["towns"] = []
+      gon.wards[ward.id]['name'] = ward.name
+      gon.wards[ward.id]['post_num'] = ward.post_num
+      gon.wards[ward.id]['towns'] = []
       ward.towns.each do |town|
-        gon.wards[ward.id]["towns"].push town
+        gon.wards[ward.id]['towns'].push town
       end
     end
     @photo = Photo.new
@@ -37,14 +37,14 @@ class PhotosController < ApplicationController
   def show
     @photo = Photo.find(params[:id])
     @og_title = "#{@photo.ward.name}#{@photo.town.name} | TokyoTownName"
-    @og_description = @photo.comment || "東京の風景を集めます"
+    @og_description = @photo.comment || '東京の風景を集めます'
     @og_image = @photo.image.image_url
     @og_url = photo_url(@photo)
   end
 
   def create
-    raise "Key is not specified" unless params[:key].present?
-    raise "not loggined" unless current_user.present?
+    raise 'Key is not specified' unless params[:key].present?
+    raise 'not loggined' unless current_user.present?
 
     ActiveRecord::Base.transaction do
       @photo = Photo.new(photo_params)
@@ -53,7 +53,7 @@ class PhotosController < ApplicationController
       @photo.save!
 
       image = Image.find_by(key: params[:key])
-      raise "no image" if image.blank?
+      raise 'no image' if image.blank?
       image.imageable = @photo
       image.save!
     end

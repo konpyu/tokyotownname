@@ -37,9 +37,11 @@ class PhotoUploader < CarrierWave::Uploader::Base
   end
 
   def set_metadata
-    begin
+    loop do
       model.key = SecureRandom.hex(16)
-    end while model.class.where(key: model.key).exists?
+      break unless model.class.where(key: model.key).exists?
+    end
+
     model.ext           = @file.extension
     model.original_name = @file.filename
 
