@@ -1,7 +1,7 @@
 class PhotoUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
-  if ['development', 'test'].include?(Rails.env)
+  if %w(development test).include?(Rails.env)
     storage :file
   else
     # fix later
@@ -13,11 +13,11 @@ class PhotoUploader < CarrierWave::Uploader::Base
   process quality:  85
 
   version :thumb do
-    process :resize_to_fit => [330, 330]
+    process resize_to_fit: [330, 330]
   end
 
   version :pickup do
-    process :resize_to_fit => [800, 800]
+    process resize_to_fit: [800, 800]
   end
 
   def extension_white_list
