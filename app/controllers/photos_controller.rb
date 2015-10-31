@@ -53,11 +53,10 @@ class PhotosController < ApplicationController
       @photo.save!
 
       image = Image.find_by(key: params[:key])
-      raise 'no image' if image.blank?
       image.imageable = @photo
       image.save!
     end
-    redirect_to root_path
+    redirect_to photo_path(@photo)
   end
 
   def destroy
