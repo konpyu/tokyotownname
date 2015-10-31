@@ -6,7 +6,7 @@ $(document).ready ->
       itemSelector: '.ttn-masonry-grid-item',
       isFitWidth: true,　
       transitionDuration: 0,
-      columnWidth: 360
+      columnWidth: 366
     });
 
   $('#ttn-photos-paging').click (e) ->

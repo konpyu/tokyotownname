@@ -239,7 +239,7 @@ div#subcontents h3{
 html, body {
 	height: 100%;
 	background-color: #F7F7F7;
-	margin-top: 60px;
+	margin-top: 40px;
 	-webkit-font-smoothing:antialiased;
 }
 div#ttn-masonry-container {
