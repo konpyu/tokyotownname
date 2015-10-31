@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_filter :authenticate!, only: [:create, :destory]
+
   def create
     unprocessable_entity! unless params[:comment].present?
     comment = Comment.new
@@ -9,9 +10,9 @@ class CommentsController < ApplicationController
     comment.comment = params[:comment]
     comment.save!
     if request.xhr?
-      render json: { comment: comment } , status:201
+      render json: { comment: comment }, status: 201
     else
-      render json: { comment: comment } , status:201
+      render json: { comment: comment }, status: 201
     end
   end
 
