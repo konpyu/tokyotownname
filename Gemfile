@@ -43,6 +43,7 @@ group :development, :test do
   gem 'rspec-activemodel-mocks'
   gem 'factory_girl_rails'
   gem 'ffaker'
+  gem 'bullet'
 end
 
 group :production do
