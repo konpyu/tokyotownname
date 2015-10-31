@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     else
       ActiveRecord::Base.transaction do
         user = User.create!(
-          name: auth['info']['nickname'] || auth['info']['name'],
+          name: auth['info']['nickname'] || auth['info']['name']
         )
         Authentication.create!(
           user_id:  user.id,
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
           image:    auth['info']['image'],
           email:    auth['info']['email'],
           gender:   auth['info']['gender'],
-          location: auth['info']['location'],
+          location: auth['info']['location']
         )
         session[:id] = user.id
       end

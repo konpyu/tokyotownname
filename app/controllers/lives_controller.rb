@@ -1,7 +1,7 @@
 class LivesController < ApplicationController
   def toggle_lives
     livable = params[:livable_type].classify.constantize.find_by(id: params[:livable_id])
-    raise "Error" if livable.blank?
+    fail 'Error' if livable.blank?
     live = Live.first_or_initialize(user: current_user, livable: livable, kind: params[:kind])
     if live.new_record?
       live.save!

@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :authenticate!, only: [:create, :destory]
+  before_action :authenticate!, only: [:create, :destory]
 
   def create
     unprocessable_entity! unless params[:comment].present?
@@ -27,5 +27,4 @@ class CommentsController < ApplicationController
   def commentable
     params[:commentable].classify.constantize.find(params[:commentable_id])
   end
-
 end

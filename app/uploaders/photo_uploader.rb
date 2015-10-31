@@ -50,5 +50,4 @@ class PhotoUploader < CarrierWave::Uploader::Base
     model.height = image[:height]
     model.size   = image[:size]
   end
-
 end
