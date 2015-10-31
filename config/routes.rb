@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: 'top#index'
   get '/auth/:provider/callback', to: 'sessions#create'
   post '/auth/:provider/callback', to: 'sessions#create'
+  get 'logout',  to: 'sessions#destroy'
 
   get 'achieve', to: 'pages#achieve'
   get 'about',   to: 'pages#about'
