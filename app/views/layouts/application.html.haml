@@ -57,7 +57,9 @@
                   = link_to "Progress", achieve_path
               %li
                 = link_to "Blog", "https://note.mu/tokyotownname", :target => "_blank"
-
+              - if current_user.present?
+                %li
+                  = link_to "Logout", logout_path
 
             %ul.nav.navbar-nav.navbar-right
               %li
