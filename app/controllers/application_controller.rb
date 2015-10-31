@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     @og_title = 'TokyoTownName'
     @og_url = root_url
     @og_image = "#{root_url}images/about/townimage.jpg"
-    @og_description = "東京の風景を集めます"
+    @og_description = '東京の風景を集めます'
   end
 
   class Tokyotownname::BadRequest < StandardError; end    # 400
@@ -43,27 +43,27 @@ class ApplicationController < ActionController::Base
   end
 
   def bad_request!
-    raise Tokyotownname::BadRequest.new
+    fail Tokyotownname::BadRequest.new
   end
 
   def unauthorized!
-    raise Tokyotownname::UnAuthorized.new
+    fail Tokyotownname::UnAuthorized.new
   end
 
   def forbidden!
-    raise Tokyotownname::Forbidden.new
+    fail Tokyotownname::Forbidden.new
   end
 
   def not_found!
-    raise Tokyotownname::NotFound.new
+    fail Tokyotownname::NotFound.new
   end
 
   def not_allowed!
-    raise Tokyotownname::NotAllowed.new
+    fail Tokyotownname::NotAllowed.new
   end
 
   def unprocessable_entity!
-    raise Tokyotownname::UnprocessableEntity.new
+    fail Tokyotownname::UnprocessableEntity.new
   end
 
   def required_attributes!(keys)
@@ -73,12 +73,11 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate!
-    raise Tokyotownname::UnAuthorized if current_user.blank?
+    fail Tokyotownname::UnAuthorized if current_user.blank?
   end
 
   def current_user
-    return User.find_by(id: session[:id])
+    User.find_by(id: session[:id])
   end
   helper_method :current_user
-
 end

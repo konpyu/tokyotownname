@@ -1,16 +1,14 @@
 class PhotosController < ApplicationController
+  before_action :authenticate!, only: [:upload, :create, :destroy]
   def index
     @photos = Photo.includes(:image, :ward, :town).order(id: :desc).page(params[:page]).per(10)
     @photos = @photos.where(user_id: params[:user_id]) if params[:user_id]
     @photos = @photos.where(town_id: params[:town_id]) if params[:town_id]
     @photos = @photos.where(ward_id: params[:ward_id]) if params[:ward_id]
-    if request.xhr?
-      render json: { html: photo_item_html, page: @photos.current_page, is_last_page: @photos.last_page? }
-    end
+    render json: { html: photo_item_html, page: @photos.current_page, is_last_page: @photos.last_page? } if request.xhr?
   end
 
   def upload
-    raise 'not loggined' unless current_user.present?
     image = Image.new
     image.image = params[:photo]
     image.user = current_user
@@ -43,8 +41,7 @@ class PhotosController < ApplicationController
   end
 
   def create
-    raise 'Key is not specified' unless params[:key].present?
-    raise 'not loggined' unless current_user.present?
+    fail 'Key is not specified' unless params[:key].present?
 
     ActiveRecord::Base.transaction do
       @photo = Photo.new(photo_params)
