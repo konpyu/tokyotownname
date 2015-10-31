@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_og
 
   def set_og
-    @og_title = "TokyoTownName"
+    @og_title = 'TokyoTownName'
     @og_url = root_url
     @og_image = "#{root_url}images/about/townimage.jpg"
     @og_description = "東京の風景を集めます"
@@ -18,31 +18,31 @@ class ApplicationController < ActionController::Base
   class Tokyotownname::NotAllowed < StandardError; end    # 405
   class Tokyotownname::UnprocessableEntity < StandardError; end    # 422
 
-  rescue_from ActiveRecord::RecordNotFound do |exception|
-    render "errors/not_found", layout: "errors", status: 404
+  rescue_from ActiveRecord::RecordNotFound do
+    render 'errors/not_found', layout: 'errors', status: 404
   end
 
   rescue_from Tokyotownname::BadRequest do
-    render "errors/bad_request", layout: "errors", status: 400
+    render 'errors/bad_request', layout: 'errors', status: 400
   end
 
   rescue_from Tokyotownname::UnAuthorized do
-    render "errors/unauthorized", layout: "errors", status: 401
+    render 'errors/unauthorized', layout: 'errors', status: 401
   end
 
   rescue_from Tokyotownname::Forbidden do
-    render "errors/forbidden", layout: "errors", status: 403
+    render 'errors/forbidden', layout: 'errors', status: 403
   end
 
   rescue_from Tokyotownname::NotAllowed do
-    render "errors/not_allowed", layout: "errors", status: 405
+    render 'errors/not_allowed', layout: 'errors', status: 405
   end
 
   rescue_from Tokyotownname::UnprocessableEntity do
-    render "errors/unprocessable_entity", layout: "errors", status: 422
+    render 'errors/unprocessable_entity', layout: 'errors', status: 422
   end
 
-  def bad_request!(key)
+  def bad_request!
     raise Tokyotownname::BadRequest.new
   end
 
