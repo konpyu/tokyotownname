@@ -20,6 +20,7 @@ gem 'mini_magick'
 gem 'faml'
 gem 'json-jwt'
 gem 'active_model_serializers'
+gem 'turbolinks'
 
 gem 'feedjira'
 gem 'omniauth'
