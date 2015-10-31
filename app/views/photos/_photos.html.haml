@@ -1,0 +1,9 @@
+%div#ttn-masonry-container
+  - photos.each do |photo|
+    .panel.panel-default.ttn-masonry-grid-item
+      = render partial: 'photos/item', locals: { photo: photo }
+
+/ FIXME: 仮置き
+%div#loading-footer(style="display:none")
+  %h3
+    Loading.....
