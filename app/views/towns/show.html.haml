@@ -1,6 +1,6 @@
 .row
   .col-md-2
-    = image_tag "/images/wards/101.png", style: "width:80%"
+    = image_tag "/images/wards/#{@town.ward.id}.png", style: "width:80%"
   .col-md-10
     %h3
       = @town.name
