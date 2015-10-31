@@ -1,51 +1,5 @@
-%div#ttn-masonry-container
-  - @photos.each do |photo|
-    .panel.panel-default.ttn-masonry-grid-item
-      = render partial: 'photos/item', locals: { photo: photo }
+= render partial: 'photos/photos', locals: { photos: @photos }
 
-/ FIXME: 仮置き
-%div#loading-footer(style="display:none")
-  %h3
-    Loading.....
-
-.modal#ttnPhotoDetailModal
-  .modal-dialog.modal-lg(role="document")
-    .modal-content
-      .row
-        .col-md-8
-          %img#modal-photo-img
-        .col-md-4
-          %h3#modal-photo-town-name
-
-          %p.text-muted#modal-photo-publish-date
-
-
-          %hr
-            %h4#modal-photo-comment
-          %hr
-
-
-          %h4
-            Reporter
-          %img#modal-photo-reporter-img.img-circle(src="" style="width:40px")
-          %p#modal-photo-reporter-name
-          %hr
-
-          %h4#comment-count
-            Comments
-          #comment-list
-          - if current_user.present?
-              = form_tag comments_path, remote: true, method: :post, id: "ttn_comment_form", class: "show" do |f|
-                .form-group
-                  = text_field_tag :comment, nil, class: "form-control show", placeholder: "コメントを追加"
-                = hidden_field_tag :commentable, "photo"
-                = hidden_field_tag :commentable_id, "", id: "modal-photo-commentable-id"
-                .form-group
-                  = submit_tag "Submit!", class: "btn btn-default"
-
-          - else
-            %p
-              コメントするためにはログインをしないといけないとです
 :javascript
   new Lives();
   new Comments();
