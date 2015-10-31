@@ -61,13 +61,23 @@ $(document).ready ->
     scrollHeight = $(document).height()
     scrollPosition = $(window).height() + $(window).scrollTop()
     if (scrollHeight - scrollPosition) < (scrollHeight * 0.03)
+
+      # 非常に雑
+      url = '/photos'
+      if window.gon.user_id
+        url = "/photos?user_id=#{window.gon.user_id}"
+      if window.gon.town_id
+        url = "/photos?town_id=#{window.gon.town_id}"
+      if window.gon.ward_id
+        url = "/photos?town_id=#{window.gon.ward_id}"
+
       unless uploading
         unless is_last_page
           $('#loading-footer').css('display', 'inline')
         uploading = true
         window.ttn_page ||= 1
         $.ajax
-          url:  '/photos'
+          url:  url
           type: 'GET'
           data:
             page: window.ttn_page + 1
