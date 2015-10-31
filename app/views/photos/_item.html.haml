@@ -11,7 +11,7 @@
         %span.townname
           = link_to "#{photo.ward.name}#{photo.town.name}", town_path(photo.town)
       %p.username
-        = link_to image_tag(photo.user.profile_image_url, class: "img-circle", style:"width:30px;"), mypage_path
+        = link_to image_tag(photo.user.profile_image_url, class: "img-circle", style:"width:30px;"), user_path(photo.user)
     %p.date
       = link_to time_ago_in_words(photo.created_at), photo_path(photo)
     - if current_user.present? && photo.user == current_user

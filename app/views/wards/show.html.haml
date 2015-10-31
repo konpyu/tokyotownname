@@ -10,7 +10,4 @@
 
 
 %hr
-.row
-  / TODO: masonryにする
-  - @ward.photos.each do |photo|
-    = link_to image_tag(photo.image.image.pickup.url, style: "width:200px"), photo_path(photo)
+= render partial: 'photos/photos', locals: { photos: @ward.photos.limit(30) }
