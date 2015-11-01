@@ -36,6 +36,8 @@ namespace :import do
         updated_at:  auth.updated_at,
       )
     end
+    maxid = Authentication.maximum(:id)
+    ActiveRecord::Base.connection.execute("alter sequence authentications_id_seq restart with #{maxid + 1}")
   end
 
   desc "import table: images"
@@ -71,6 +73,8 @@ namespace :import do
     map.each do |id, image|
       ActiveRecord::Base.connection.execute("update images set image='#{image}' where id=#{id}")
     end
+    maxid = Image.maximum(:id)
+    ActiveRecord::Base.connection.execute("alter sequence images_id_seq restart with #{maxid + 1}")
   end
 
   desc "import table: users"
@@ -91,6 +95,8 @@ namespace :import do
         updated_at: user.updated_at,
       )
     end
+    maxid = User.maximum(:id)
+    ActiveRecord::Base.connection.execute("alter sequence users_id_seq restart with #{maxid + 1}")
   end
 
   desc "import table: photos"
@@ -116,5 +122,7 @@ namespace :import do
       photo.ward_id = photo.ward_id.to_i - 100
       photo.save!
     end
+    maxid = Photo.maximum(:id)
+    ActiveRecord::Base.connection.execute("alter sequence photos_id_seq restart with #{maxid + 1}")
   end
 end
