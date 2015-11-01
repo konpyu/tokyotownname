@@ -5,7 +5,6 @@ namespace :import do
   task delete: :environment do
     Authentication.delete_all
     Comment.delete_all
-    Favorite.delete_all
     Image.delete_all
     Live.delete_all
     Notification.delete_all
