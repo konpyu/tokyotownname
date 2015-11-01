@@ -1,21 +1,28 @@
-### radio
+### TokyoTownName
 
-### setup
+Collect tokyo's landscape by uploading the photo with "address board".
+
+http://www.tokyotownname.com/
+
+### stack
+
+Ruby on Rails(4.2) on heroku
+
+### development
+
+clone this repo and setup initial data by hitting.
 
 ```
-git clone git@github.com:konpyu/tokyotownname-new.git
-cd radio
-bundle install --path=vendor/bundle
-bundle exec rake db:create
-bundle exec rake db:migrate
-bower install # if bower has not installed, npm install -g bower
+bundle exec rake db:seed_fu
 ```
 
-### run server
+then, export following environment variables
 
 ```
-mysql.server start
-cd ~/tokyotownname-new
-bundle exec rails s
-# see localhost:3331 on your browser
+FACEBOOK_KEY
+FACEBOOK_SECRET
+TWITTER_KEY              
+TWITTER_SECRET
+TTN_S3_ACCESS_KEY        
+TTN_S3_ACCESS_SECRET
 ```
