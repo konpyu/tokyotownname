@@ -53,7 +53,8 @@
             ログイン
         %span
             をするとコメントができるようになります
-    %a(href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.tokyotownname.com" data-via="konpyu" data-lang="ja")
+
+    %a(href="https://twitter.com/share" class="twitter-share-button" data-url="#{request.url}" data-via="konpyu" data-lang="ja")
       ツイート
     .fb-share-button(data-href="#{request.url}" data-layout="button_count")
 :javascript
