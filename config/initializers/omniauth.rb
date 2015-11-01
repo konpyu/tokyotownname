@@ -1,12 +1,12 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
   # Providers
-  provider :twitter, "ENV[TWITTER_KEY]", "ENV[TWITTER_SECRET]", {
+  provider :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET'], {
     image_size: 'original',
     authorize_params: {
       lang: 'ja',
     }
   }
-  provider :facebook, "ENV[FACEBOOK_KEY]" , "ENV[FACEBOOK_SECRET]" , {
+  provider :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'], {
     image_size: 'large'
   }
 end
