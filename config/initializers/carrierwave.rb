@@ -23,7 +23,7 @@ CarrierWave.configure do |config|
       aws_secret_access_key: ENV['TTN_S3_ACCESS_SECRET'],
       region:                'ap-northeast-1',
     }
-    config.fog_directory  = "ttn-photo"
+    config.fog_directory  = "tokyotownname"
     config.fog_public     = true
     config.fog_attributes = { 'Cache-Control' => 'max-age=315576000', 'Expires' => 10.years.from_now.httpdate }
     config.fog_authenticated_url_expiration = (365 * 24 * 60 * 60)
