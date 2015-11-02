@@ -1,5 +1,7 @@
 %h2
   Project達成状況
+%h4
+  = "#{(Photo.distinct(:town_id).count.to_f / 932.0 * 100).to_s(:percentage, precision: 1)} (#{Photo.distinct(:town_id).count}/932)"
 %hr
 
 - Ward.all.each do |ward|
