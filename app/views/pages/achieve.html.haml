@@ -12,5 +12,23 @@
     %p
       = "#{Photo.where(ward_id: ward.id).count} / #{Town.where(ward_id: ward.id).count} #{(Photo.where(ward_id: ward.id).count.to_f / Town.where(ward_id: ward.id).count.to_f * 100).to_i}%"
 
+%hr
+
+.space-clear-float(style="clear:both")
+/ contributers
+.contributer-area
+  %h2
+    Contributer Ranking
+  .row
+    - User.order(post_num: :desc).limit(6).each do |user|
+      .col-sm-6.col-md-2
+        .thumbnail
+          = link_to image_tag(user.profile_image_url), user_path(user)
+          .caption
+            %h4
+              = user.name
+            %h5
+              = "投稿数 #{user.post_num}"
+
 :javascript
   new Archive();
