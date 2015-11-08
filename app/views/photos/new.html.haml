@@ -59,7 +59,8 @@
                 = ward.name
               .select
                 - ward.towns.each do |town|
-                  %a.search-links-town-name.search-links-fugafuga(data-id="#{town.id}" data-town_name="#{town.name}" data-ward_name="#{ward.name}")
+
+                  %a.search-links-town-name.search-links-fugafuga(data-id="#{town.id}" data-town-name="#{town.name}" data-ward-name="#{ward.name}")
                     = town.name
 
     %div.tab-pane#choose(role="tabpanel")

@@ -17,8 +17,8 @@ class @Search
 
     $(".search-links-fugafuga").click (event) ->
       town_id   = $(this).data('id')
-      town_name = $(this).data('town_name')
-      ward_name = $(this).data('ward_name')
+      town_name = $(this).data('town-name')
+      ward_name = $(this).data('ward-name')
       $("#photo-new-upload-photo").css("display","block")
       $("#photo-new-upload-photo").find("input[name=town_id]").val(town_id)
       $("#photo-new-upload-town").text("#{ward_name}#{town_name}の写真をアップします")
