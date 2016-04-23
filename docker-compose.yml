@@ -1,0 +1,31 @@
+mysql:
+  image: mysql:5.6.23
+  environment:
+    MYSQL_ROOT_PASSWORD: "password"
+  ports:
+    - '3306:3306'
+  volumes:
+    - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+  volumes_from:
+    - datastore
+
+datastore:
+  build: docker/datastore
+
+web:
+  build: .
+  command: bundle exec rails s -p 3331 -b '0.0.0.0'
+  ports:
+    - '3331:3331'
+  environment:
+    RAILS_ENV: development
+    DATABASE_HOST: 192.168.99.100
+    MYSQL_ROOT_PASSWORD: "password"
+  dns:
+    - 8.8.8.8
+  volumes:
+    - .:/app
+  volumes_from:
+    - datastore
+  links:
+    - mysql

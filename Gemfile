@@ -23,7 +23,6 @@ gem 'active_model_serializers'
 gem 'turbolinks'
 gem 'rubocop'
 
-gem 'feedjira'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
@@ -46,7 +45,3 @@ group :development, :test do
   gem 'bullet'
 end
 
-group :production do
-  gem 'pg'
-  gem 'rails_12factor'
-end

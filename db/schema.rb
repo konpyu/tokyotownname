@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20150628034559) do
     t.datetime "updated_at",               null: false
   end
 
-  add_index "lives", ["user_id", "livable_type", "livable_id"], name: "index_lives_on_user_id_and_livable_type_and_livable_id", unique: true, using: :btree
+  add_index "lives", ["user_id", "livable_type", "livable_id"], name: "i1", unique: true, using: :btree
 
   create_table "notifications", force: :cascade do |t|
     t.datetime "created_at", null: false
